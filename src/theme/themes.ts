@@ -6,6 +6,9 @@ const baseTypography = {
 
 export const AppThemeLight = createTheme({
     palette: {
+        primary: {
+            main: '#0f62fe',
+        },
         background: {
             default: '#f6f7f8',
         },
