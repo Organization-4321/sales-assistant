@@ -1,5 +1,9 @@
 import { createTheme } from '@mui/material';
 
+const baseTypography = {
+    fontFamily: 'Poppins, sans-serif',
+};
+
 export const AppThemeLight = createTheme({
     palette: {
         background: {
@@ -9,6 +13,7 @@ export const AppThemeLight = createTheme({
             primary: '#252733',
         },
     },
+    typography: baseTypography,
 });
 
 export const AppThemeDark = createTheme({
@@ -20,4 +25,5 @@ export const AppThemeDark = createTheme({
             primary: '#ebecf0',
         },
     },
+    typography: baseTypography,
 });
