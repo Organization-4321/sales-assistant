@@ -1,5 +1,12 @@
+import { CssBaseline } from '@mui/material';
+import { ThemeContextProvider } from './theme';
+
 function App() {
-    return <></>;
+    return (
+        <ThemeContextProvider>
+            <CssBaseline />
+        </ThemeContextProvider>
+    );
 }
 
 export default App;
