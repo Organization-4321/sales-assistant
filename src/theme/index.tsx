@@ -1,4 +1,4 @@
-import { createContext, FC, PropsWithChildren, useState } from 'react';
+import { createContext, FC, PropsWithChildren, useContext, useState } from 'react';
 import { ITheme, IThemeContext } from './types';
 import { Theme, ThemeProvider } from '@mui/material';
 import { AppThemeDark, AppThemeLight } from './themes';
@@ -30,4 +30,13 @@ export const ThemeContextProvider: FC<PropsWithChildren> = ({ children }) => {
             <ThemeProvider theme={theme}>{children}</ThemeProvider>
         </ThemeContext.Provider>
     );
+};
+
+export const useAppTheme = () => {
+    const themeContext = useContext(ThemeContext);
+
+    if (!themeContext) {
+        throw new Error('ThemeContext must be used within a ThemeContextProvider');
+    }
+    return themeContext;
 };
