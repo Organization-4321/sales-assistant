@@ -45,6 +45,18 @@ const createAppTheme = (mode: ITheme) => {
                     },
                 },
             },
+            MuiDivider: {
+                styleOverrides: {
+                    root: {
+                        '&::after': {
+                            borderColor: isDarkMode ? '#414752' : '#d5d7db',
+                        },
+                        '&::before': {
+                            borderColor: isDarkMode ? '#414752' : '#d5d7db',
+                        },
+                    },
+                },
+            },
         },
     });
 };
