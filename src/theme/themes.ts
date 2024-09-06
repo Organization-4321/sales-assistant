@@ -1,32 +1,32 @@
-import { createTheme } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import { ITheme } from './types';
 
 const baseTypography = {
     fontFamily: 'Poppins, sans-serif',
 };
 
-export const AppThemeLight = createTheme({
-    palette: {
-        primary: {
-            main: '#0f62fe',
-        },
-        background: {
-            default: '#f6f7f8',
-        },
-        text: {
-            primary: '#252733',
-        },
-    },
-    typography: baseTypography,
-});
+const createAppTheme = (mode: ITheme) => {
+    const isDarkMode = mode === 'dark';
 
-export const AppThemeDark = createTheme({
-    palette: {
-        background: {
-            default: '#131314',
+    const theme = createTheme({
+        typography: baseTypography,
+    });
+
+    return createTheme(theme, {
+        palette: {
+            mode,
+            primary: {
+                main: isDarkMode ? '#131314' : '#0f62fe',
+            },
+            background: {
+                default: isDarkMode ? '#131314' : '#fff',
+            },
+            text: {
+                primary: isDarkMode ? '#ebecf0' : '#252733',
+            },
         },
-        text: {
-            primary: '#ebecf0',
-        },
-    },
-    typography: baseTypography,
-});
+    });
+};
+
+export const AppThemeLight = createAppTheme(ITheme.LIGHT);
+export const AppThemeDark = createAppTheme(ITheme.DARK);
