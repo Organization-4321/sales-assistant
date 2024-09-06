@@ -25,6 +25,27 @@ const createAppTheme = (mode: ITheme) => {
                 primary: isDarkMode ? '#ebecf0' : '#252733',
             },
         },
+        components: {
+            MuiButton: {
+                styleOverrides: {
+                    root: {
+                        padding: theme.spacing(1.5),
+                        border: `2px solid ${isDarkMode ? '#3760ad' : '#abbde0'}`,
+                        color: isDarkMode ? '#ebecf0' : '#252733',
+                        backgroundColor: isDarkMode ? '#131314' : '#fff',
+                        textTransform: 'initial',
+                        '&:hover': {
+                            borderColor: isDarkMode ? '#3760ad' : '#abbde0',
+                            backgroundColor: isDarkMode ? '#181b29' : '#f0f5ff',
+                        },
+                        '&:focus': {
+                            borderColor: isDarkMode ? '#3760ad' : '#abbde0',
+                            backgroundColor: isDarkMode ? '#3760ad' : '#abbde0',
+                        },
+                    },
+                },
+            },
+        },
     });
 };
 
