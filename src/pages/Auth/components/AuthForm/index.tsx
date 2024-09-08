@@ -2,10 +2,13 @@ import { Button, Divider, InputAdornment, Stack, TextField, Typography } from '@
 import { FC, useState, useRef, ChangeEvent } from 'react';
 import SalesAssistantIcon from '../../../../components/icons/SalesAssistantIcon';
 import VisibilityIcon from '../../../../components/icons/VisibilityIcon';
+import { useLoginMutation } from '../../../../api/loginApi';
 
 interface AuthFormProps {}
 
 const AuthForm: FC<AuthFormProps> = ({}) => {
+    const [login, { data }] = useLoginMutation();
+
     const [email, setEmail] = useState('');
 
     const passwordRef = useRef<HTMLInputElement>(null);
@@ -26,6 +29,10 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
 
     const handleChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
+    };
+
+    const handleLoginClick = () => {
+        login({ email, password });
     };
 
     return (
@@ -58,7 +65,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
                         ),
                     }}
                 />
-                <Button color="primary" variant="outlined">
+                <Button color="primary" variant="outlined" onClick={handleLoginClick}>
                     Log in
                 </Button>
             </Stack>
