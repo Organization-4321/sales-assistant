@@ -36,9 +36,6 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
                 Login
             </Typography>
             <Stack direction="column" gap={2}>
-                <Button color="primary" variant="outlined">
-                    Log in
-                </Button>
                 <Divider sx={{ fontWeight: 500, color: '#70737a' }}>or</Divider>
                 <TextField placeholder="Email" />
                 <TextField
