@@ -6,6 +6,8 @@ import VisibilityIcon from '../../../../components/icons/VisibilityIcon';
 interface AuthFormProps {}
 
 const AuthForm: FC<AuthFormProps> = ({}) => {
+    const [email, setEmail] = useState('');
+
     const passwordRef = useRef<HTMLInputElement>(null);
     const [password, setPassword] = useState('');
 
@@ -20,6 +22,10 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             passwordRef.current.type === 'text'
                 ? (passwordRef.current.type = 'password')
                 : (passwordRef.current.type = 'text');
+    };
+
+    const handleChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
+        setEmail(e.target.value);
     };
 
     return (
@@ -37,7 +43,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             </Typography>
             <Stack direction="column" gap={2}>
                 <Divider sx={{ fontWeight: 500, color: '#70737a' }}>or</Divider>
-                <TextField placeholder="Email" />
+                <TextField placeholder="Email" onChange={handleChangeEmail} />
                 <TextField
                     inputRef={passwordRef}
                     placeholder="Password"
