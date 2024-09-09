@@ -3,11 +3,15 @@ import { FC, useState, useRef, ChangeEvent } from 'react';
 import SalesAssistantIcon from '../../../../components/icons/SalesAssistantIcon';
 import VisibilityIcon from '../../../../components/icons/VisibilityIcon';
 import { useLoginMutation } from '../../../../api/loginApi';
+import { useAppDispatch } from '../../../../store';
+import { setUser } from '../../../../store/slices/authSlice';
+import { IApiResponseDTO } from '../../../../interfaces-submodule/interfaces/dto/common/iapi-response.interface';
 
 interface AuthFormProps {}
 
 const AuthForm: FC<AuthFormProps> = ({}) => {
     const [login, { data }] = useLoginMutation();
+    const dispatch = useAppDispatch();
 
     const [email, setEmail] = useState('');
 
@@ -31,8 +35,14 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
         setEmail(e.target.value);
     };
 
-    const handleLoginClick = () => {
-        login({ email, password });
+    const handleLoginClick = async () => {
+        try {
+            const responseData = await login({ email, password }).unwrap();
+            dispatch(setUser(responseData.data.account));
+        } catch (err) {
+            const errorResponse = err as { data: IApiResponseDTO };
+            console.log(errorResponse.data.error);
+        }
     };
 
     return (
