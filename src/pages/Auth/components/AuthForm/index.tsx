@@ -49,7 +49,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
                 Login
             </Typography>
             <Stack direction="column" gap={2}>
-                <Divider sx={{ fontWeight: 500, color: '#70737a' }}>or</Divider>
+                <Divider>or</Divider>
                 <TextField placeholder="Email" onChange={handleChangeEmail} />
                 <TextField
                     inputRef={passwordRef}
