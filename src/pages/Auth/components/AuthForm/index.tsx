@@ -5,12 +5,13 @@ import VisibilityIcon from '../../../../components/icons/VisibilityIcon';
 import { useLoginMutation } from '../../../../api/loginApi';
 import { useAppDispatch } from '../../../../store';
 import { setUser } from '../../../../store/slices/authSlice';
-import { IApiResponseDTO } from '../../../../interfaces-submodule/interfaces/dto/common/iapi-response.interface';
+import { getResponseErrorMessage } from '../../../../utils/getResponseErrorMessage';
+import CustomAlertError from '../../../../components/UI/CustomAlertError';
 
 interface AuthFormProps {}
 
 const AuthForm: FC<AuthFormProps> = ({}) => {
-    const [login, { data }] = useLoginMutation();
+    const [login, { error }] = useLoginMutation();
     const dispatch = useAppDispatch();
 
     const [email, setEmail] = useState('');
@@ -40,8 +41,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
             const responseData = await login({ email, password }).unwrap();
             dispatch(setUser(responseData.data.account));
         } catch (err) {
-            const errorResponse = err as { data: IApiResponseDTO };
-            console.log(errorResponse.data.error);
+            console.error(err);
         }
     };
 
