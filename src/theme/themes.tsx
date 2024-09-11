@@ -34,6 +34,7 @@ const createAppTheme = (mode: ITheme) => {
                 styleOverrides: {
                     root: {
                         padding: theme.spacing(1.5),
+                        borderRadius: theme.spacing(1),
                         border: `2px solid ${isDarkMode ? '#3760ad' : '#abbde0'}`,
                         color: isDarkMode ? '#ebecf0' : '#252733',
                         backgroundColor: isDarkMode ? '#131314' : '#fff',
@@ -46,6 +47,13 @@ const createAppTheme = (mode: ITheme) => {
                             borderColor: isDarkMode ? '#3760ad' : '#abbde0',
                             backgroundColor: isDarkMode ? '#3760ad' : '#abbde0',
                         },
+                    },
+                },
+            },
+            MuiInput: {
+                styleOverrides: {
+                    root: {
+                        borderRadius: theme.spacing(1),
                     },
                 },
             },
