@@ -59,6 +59,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
                 Login
             </Typography>
             <Stack direction="column" gap={2}>
+                {error && <CustomAlertError errors={getResponseErrorMessage(error)} />}
                 <Divider>or</Divider>
                 <TextField placeholder="Email" onChange={handleChangeEmail} />
                 <TextField
