@@ -39,6 +39,8 @@ const createAppTheme = (mode: ITheme) => {
                         color: isDarkMode ? '#ebecf0' : '#252733',
                         backgroundColor: isDarkMode ? '#131314' : '#fff',
                         textTransform: 'initial',
+                        fontSize: theme.spacing(2),
+                        fontWeight: 'bold',
                         '&:hover': {
                             borderColor: isDarkMode ? '#3760ad' : '#abbde0',
                             backgroundColor: isDarkMode ? '#181b29' : '#f0f5ff',
