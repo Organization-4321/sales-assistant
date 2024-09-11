@@ -18,6 +18,18 @@ const loginApi = createApi({
                     password,
                 },
             }),
+            async onQueryStarted(_, { queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+
+                    const { accessToken, refreshToken } = data.data.access;
+
+                    localStorage.setItem('accessToken', accessToken);
+                    localStorage.setItem('refreshToken', refreshToken);
+                } catch (err) {
+                    console.error('Failed to store tokens:', err);
+                }
+            },
         }),
     }),
 });
