@@ -5,6 +5,7 @@ import { ILoginResponseDTO } from '../interfaces-submodule/interfaces/dto/auth/i
 import { IApiResponseGenericDTO } from '../interfaces-submodule/interfaces/dto/common/iapi-response.interface';
 
 const loginApi = createApi({
+    reducerPath: 'login',
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_BASE_API_URL + AuthRoutes.BasePrefix,
     }),
