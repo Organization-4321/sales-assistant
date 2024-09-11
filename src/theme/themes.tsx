@@ -50,7 +50,7 @@ const createAppTheme = (mode: ITheme) => {
                     },
                 },
             },
-            MuiInput: {
+            MuiOutlinedInput: {
                 styleOverrides: {
                     root: {
                         borderRadius: theme.spacing(1),
