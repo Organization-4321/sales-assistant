@@ -3,8 +3,6 @@ import { AuthRoutes } from '../interfaces-submodule/enums/routes/auth-routes.enu
 import { ILoginRequestDTO } from '../interfaces-submodule/interfaces/dto/auth/iadmin-login-request.interface';
 import { ILoginResponseDTO } from '../interfaces-submodule/interfaces/dto/auth/ilogin-response.interfaces';
 import { IApiResponseGenericDTO } from '../interfaces-submodule/interfaces/dto/common/iapi-response.interface';
-import { IAccountResponseDTO } from '../interfaces-submodule/interfaces/dto/account/iaccount-response.interfaces';
-import { setUser } from '../store/slices/authSlice';
 
 const loginApi = createApi({
     reducerPath: 'login',
@@ -34,23 +32,9 @@ const loginApi = createApi({
                 }
             },
         }),
-        recoverUser: builder.query<IApiResponseGenericDTO<IAccountResponseDTO>, void>({
-            query: () => ({
-                url: AuthRoutes.RecoverUser,
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-                },
-            }),
-            async onQueryStarted(_, { dispatch, queryFulfilled }) {
-                try {
-                    const { data } = await queryFulfilled;
-                    dispatch(setUser(data.data.account));
-                } catch (err) {}
-            },
-        }),
     }),
 });
 
-export const { useLoginMutation, useRecoverUserQuery } = loginApi;
+export const { useLoginMutation } = loginApi;
 
 export default loginApi;
