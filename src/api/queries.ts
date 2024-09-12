@@ -4,7 +4,7 @@ import {
     fetchBaseQuery,
     FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
-import loginApi from './loginApi';
+import authApi from './authApi';
 import { clearUser } from '../store/slices/currentUserSlice';
 
 export const baseQueryWithAccessToken = (path: string) =>
@@ -30,9 +30,7 @@ export const baseQueryWithReauth: (
             const status = result.error.status;
 
             if (status === 401 || status === 403) {
-                const refreshResult = await api.dispatch(
-                    loginApi.endpoints.refreshToken.initiate(),
-                );
+                const refreshResult = await api.dispatch(authApi.endpoints.refreshToken.initiate());
 
                 if (refreshResult.error) {
                     console.error('Tokens update error');

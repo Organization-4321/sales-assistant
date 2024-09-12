@@ -4,8 +4,8 @@ import { ILoginRequestDTO } from '../interfaces-submodule/interfaces/dto/auth/ia
 import { ILoginResponseDTO } from '../interfaces-submodule/interfaces/dto/auth/ilogin-response.interfaces';
 import { IApiResponseGenericDTO } from '../interfaces-submodule/interfaces/dto/common/iapi-response.interface';
 
-const loginApi = createApi({
-    reducerPath: 'login',
+const authApi = createApi({
+    reducerPath: AuthRoutes.BasePrefix,
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_BASE_API_URL + AuthRoutes.BasePrefix,
     }),
@@ -54,6 +54,6 @@ const loginApi = createApi({
     }),
 });
 
-export const { useLoginMutation } = loginApi;
+export const { useLoginMutation } = authApi;
 
-export default loginApi;
+export default authApi;
