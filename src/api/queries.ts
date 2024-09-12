@@ -5,7 +5,7 @@ import {
     FetchBaseQueryError,
 } from '@reduxjs/toolkit/query';
 import loginApi from './loginApi';
-import { clearUser } from '../store/slices/authSlice';
+import { clearUser } from '../store/slices/currentUserSlice';
 
 export const baseQueryWithAccessToken = (path: string) =>
     fetchBaseQuery({

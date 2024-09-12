@@ -1,16 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IAccountDTO } from '../../interfaces-submodule/interfaces/dto/account/iaccount.interface';
 
-export interface IAuthState {
+export interface ICurrentUserSliceState {
     user: null | IAccountDTO;
 }
 
-const initialState: IAuthState = {
+const initialState: ICurrentUserSliceState = {
     user: null,
 };
 
-const authSlice = createSlice({
-    name: 'auth',
+const currentUserSlice = createSlice({
+    name: 'currentUser',
     initialState,
     reducers: {
         setUser: (state, action: PayloadAction<IAccountDTO>) => {
@@ -22,6 +22,6 @@ const authSlice = createSlice({
     },
 });
 
-export const { setUser } = authSlice.actions;
+export const { setUser, clearUser } = currentUserSlice.actions;
 
-export default authSlice.reducer;
+export default currentUserSlice.reducer;

@@ -3,7 +3,7 @@ import { baseQueryWithReauth } from './queries';
 import { AuthRoutes } from '../interfaces-submodule/enums/routes/auth-routes.enum';
 import { IApiResponseGenericDTO } from '../interfaces-submodule/interfaces/dto/common/iapi-response.interface';
 import { IAccountResponseDTO } from '../interfaces-submodule/interfaces/dto/account/iaccount-response.interfaces';
-import { setUser } from '../store/slices/authSlice';
+import { setUser } from '../store/slices/currentUserSlice';
 
 const accountApi = createApi({
     reducerPath: 'account',
