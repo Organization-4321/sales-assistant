@@ -2,12 +2,11 @@ import { Button, Divider, InputAdornment, Stack, TextField, Typography } from '@
 import { FC, useState, useRef, ChangeEvent } from 'react';
 import SalesAssistantIcon from '../../../../components/icons/SalesAssistantIcon';
 import VisibilityIcon from '../../../../components/icons/VisibilityIcon';
-import { useLoginMutation } from '../../../../api/loginApi';
+import { useLoginMutation } from '../../../../api/authApi';
 import { useAppDispatch } from '../../../../store';
-import { setUser } from '../../../../store/slices/authSlice';
+import { setUser } from '../../../../store/slices/currentUserSlice';
 import { getResponseErrorMessage } from '../../../../utils/getResponseErrorMessage';
 import CustomAlertError from '../../../../components/UI/CustomAlertError';
-
 interface AuthFormProps {}
 
 const AuthForm: FC<AuthFormProps> = ({}) => {
