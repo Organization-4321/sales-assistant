@@ -1,11 +1,12 @@
 import { Button, Divider, InputAdornment, Stack, TextField } from '@mui/material';
-import { FC, useState, useRef, ChangeEvent } from 'react';
+import { FC, useState, useRef, ChangeEvent, FormEvent } from 'react';
 import { useLoginMutation } from '../../../../api/authApi';
 import { useAppDispatch } from '../../../../store';
 import { setUser } from '../../../../store/slices/currentUserSlice';
 import { getResponseErrorMessage } from '../../../../utils/getResponseErrorMessage';
 import VisibilityIcon from '../../../../components/icons/VisibilityIcon';
 import CustomAlertError from '../../../../components/UI/CustomAlertError';
+import MicrosoftIcon from '../../../../components/icons/MicrosoftIcon';
 
 interface AuthFormProps {}
 
@@ -35,7 +36,8 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
         setEmail(e.target.value);
     };
 
-    const handleLoginClick = async () => {
+    const handleFormSubmit = async (e: FormEvent) => {
+        e.preventDefault();
         try {
             const responseData = await login({ email, password }).unwrap();
             dispatch(setUser(responseData.data.account));
@@ -45,28 +47,31 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
     };
 
     return (
-        <Stack direction="column" gap={2}>
-            {error && <CustomAlertError errors={getResponseErrorMessage(error)} />}
-            <Divider>or</Divider>
-            <TextField placeholder="Email" onChange={handleChangeEmail} />
-            <TextField
-                inputRef={passwordRef}
-                placeholder="Password"
-                type="password"
-                value={password}
-                onChange={handleChangePassword}
-                InputProps={{
-                    endAdornment: showVisibiltyIcon && (
-                        <InputAdornment position="start" onClick={toggleShowPassword}>
-                            <VisibilityIcon />
-                        </InputAdornment>
-                    ),
-                }}
-            />
-            <Button color="primary" variant="outlined" onClick={handleLoginClick}>
-                Log in
-            </Button>
-        </Stack>
+        <form onSubmit={handleFormSubmit}>
+            <Stack direction="column" gap={2}>
+                <Button startIcon={<MicrosoftIcon />}>Continue with Microsoft</Button>
+                {error && <CustomAlertError errors={getResponseErrorMessage(error)} />}
+                <Divider>or</Divider>
+                <TextField placeholder="Email" onChange={handleChangeEmail} />
+                <TextField
+                    inputRef={passwordRef}
+                    placeholder="Password"
+                    type="password"
+                    value={password}
+                    onChange={handleChangePassword}
+                    InputProps={{
+                        endAdornment: showVisibiltyIcon && (
+                            <InputAdornment position="start" onClick={toggleShowPassword}>
+                                <VisibilityIcon />
+                            </InputAdornment>
+                        ),
+                    }}
+                />
+                <Button type="submit" color="primary" variant="outlined">
+                    Log in
+                </Button>
+            </Stack>
+        </form>
     );
 };
 
