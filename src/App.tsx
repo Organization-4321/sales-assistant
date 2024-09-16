@@ -1,6 +1,5 @@
 import { CssBaseline } from '@mui/material';
 import { ThemeContextProvider } from './theme';
-import Auth from './pages/Auth';
 import { useRecoverUserQuery } from './api/accountApi';
 
 function App() {
@@ -9,7 +8,6 @@ function App() {
     return (
         <ThemeContextProvider>
             <CssBaseline />
-            <Auth />
         </ThemeContextProvider>
     );
 }
