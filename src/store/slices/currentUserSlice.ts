@@ -18,6 +18,8 @@ const currentUserSlice = createSlice({
         },
         clearUser: (state) => {
             state.user = null;
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('refreshToken');
         },
     },
 });
