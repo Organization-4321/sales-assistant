@@ -1,17 +1,16 @@
 import { CssBaseline } from '@mui/material';
 import { ThemeContextProvider } from './theme';
 import Auth from './pages/Auth';
-import { Provider } from 'react-redux';
-import { store } from './store';
+import { useRecoverUserQuery } from './api/accountApi';
 
 function App() {
+    useRecoverUserQuery();
+
     return (
-        <Provider store={store}>
-            <ThemeContextProvider>
-                <CssBaseline />
-                <Auth />
-            </ThemeContextProvider>
-        </Provider>
+        <ThemeContextProvider>
+            <CssBaseline />
+            <Auth />
+        </ThemeContextProvider>
     );
 }
 
