@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Stack } from '@mui/material';
 import { useAppTheme } from '../../theme';
 import AuthForm from './components/AuthForm';
+import AuthFormTitles from './components/AuthFormTitles';
 
 interface AuthProps {}
 
@@ -19,7 +20,10 @@ const Auth: FC<AuthProps> = ({}) => {
                         paddingX: { md: 7.5 },
                         paddingY: { md: 12 },
                     }}>
-                    <AuthForm />
+                    <Stack direction="column">
+                        <AuthFormTitles />
+                        <AuthForm />
+                    </Stack>
                 </Grid>
                 <Grid
                     item
