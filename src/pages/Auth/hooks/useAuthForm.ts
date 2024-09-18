@@ -12,7 +12,7 @@ const useAuthForm = () => {
     const passwordRef = useRef<HTMLInputElement>(null);
     const [password, setPassword] = useState('');
 
-    const showVisibiltyIcon = password.length > 0;
+    const showPasswordVisibilityIcon = password.length > 0;
 
     const handleChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
@@ -45,7 +45,7 @@ const useAuthForm = () => {
         login,
         error,
         email,
-        showVisibiltyIcon,
+        showPasswordVisibilityIcon,
         handleChangePassword,
         toggleShowPassword,
         handleChangeEmail,

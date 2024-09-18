@@ -11,7 +11,8 @@ interface AuthFormProps {}
 const AuthForm: FC<AuthFormProps> = ({}) => {
     const {
         password,
-        showVisibiltyIcon,
+        email,
+        showPasswordVisibilityIcon,
         passwordRef,
         error,
         handleChangePassword,
@@ -26,7 +27,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
                 <Button startIcon={<MicrosoftIcon />}>Continue with Microsoft</Button>
                 {error && <CustomAlertError errors={getResponseErrorMessage(error)} />}
                 <Divider>or</Divider>
-                <TextField placeholder="Email" onChange={handleChangeEmail} />
+                <TextField placeholder="Email" value={email} onChange={handleChangeEmail} />
                 <TextField
                     inputRef={passwordRef}
                     placeholder="Password"
@@ -34,7 +35,7 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
                     value={password}
                     onChange={handleChangePassword}
                     InputProps={{
-                        endAdornment: showVisibiltyIcon && (
+                        endAdornment: showPasswordVisibilityIcon && (
                             <InputAdornment position="start" onClick={toggleShowPassword}>
                                 <VisibilityIcon />
                             </InputAdornment>
