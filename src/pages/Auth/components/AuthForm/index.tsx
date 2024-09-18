@@ -1,50 +1,24 @@
 import { Button, Divider, InputAdornment, Stack, TextField } from '@mui/material';
-import { FC, useState, useRef, ChangeEvent, FormEvent } from 'react';
-import { useLoginMutation } from '../../../../api/authApi';
-import { useAppDispatch } from '../../../../store';
-import { setUser } from '../../../../store/slices/currentUserSlice';
+import { FC } from 'react';
 import { getResponseErrorMessage } from '../../../../utils/getResponseErrorMessage';
 import VisibilityIcon from '../../../../components/icons/VisibilityIcon';
 import CustomAlertError from '../../../../components/UI/CustomAlertError';
 import MicrosoftIcon from '../../../../components/icons/MicrosoftIcon';
+import useAuthForm from '../../hooks/useAuthForm';
 
 interface AuthFormProps {}
 
 const AuthForm: FC<AuthFormProps> = ({}) => {
-    const [login, { error }] = useLoginMutation();
-    const dispatch = useAppDispatch();
-
-    const [email, setEmail] = useState('');
-
-    const passwordRef = useRef<HTMLInputElement>(null);
-    const [password, setPassword] = useState('');
-
-    const showVisibiltyIcon = password.length > 0;
-
-    const handleChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
-
-    const toggleShowPassword = () => {
-        if (passwordRef.current)
-            passwordRef.current.type === 'text'
-                ? (passwordRef.current.type = 'password')
-                : (passwordRef.current.type = 'text');
-    };
-
-    const handleChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    };
-
-    const handleFormSubmit = async (e: FormEvent) => {
-        e.preventDefault();
-        try {
-            const responseData = await login({ email, password }).unwrap();
-            dispatch(setUser(responseData.data.account));
-        } catch (err) {
-            console.error(err);
-        }
-    };
+    const {
+        password,
+        showVisibiltyIcon,
+        passwordRef,
+        error,
+        handleChangePassword,
+        handleChangeEmail,
+        toggleShowPassword,
+        handleFormSubmit,
+    } = useAuthForm();
 
     return (
         <form onSubmit={handleFormSubmit}>
