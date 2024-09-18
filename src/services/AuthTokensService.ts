@@ -19,7 +19,7 @@ class AuthTokensService {
 
     static clearTokens() {
         localStorage.removeItem(Tokens.ACCESS);
-        localStorage.setremoveItemItem(Tokens.REFRESH);
+        localStorage.removeItem(Tokens.REFRESH);
     }
 
     static getAccessToken() {
