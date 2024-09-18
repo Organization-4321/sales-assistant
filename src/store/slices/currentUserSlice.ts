@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IAccountDTO } from '../../interfaces-submodule/interfaces/dto/account/iaccount.interface';
+import AuthTokensService from '../../services/AuthTokensService';
 
 export interface ICurrentUserSliceState {
     user: null | IAccountDTO;
@@ -18,8 +19,7 @@ const currentUserSlice = createSlice({
         },
         clearUser: (state) => {
             state.user = null;
-            localStorage.removeItem('accessToken');
-            localStorage.removeItem('refreshToken');
+            AuthTokensService.clearTokens();
         },
     },
 });

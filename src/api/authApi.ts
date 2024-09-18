@@ -3,6 +3,7 @@ import { AuthRoutes } from '../interfaces-submodule/enums/routes/auth-routes.enu
 import { ILoginRequestDTO } from '../interfaces-submodule/interfaces/dto/auth/iadmin-login-request.interface';
 import { ILoginResponseDTO } from '../interfaces-submodule/interfaces/dto/auth/ilogin-response.interfaces';
 import { IApiResponseGenericDTO } from '../interfaces-submodule/interfaces/dto/common/iapi-response.interface';
+import AuthTokensService from '../services/AuthTokensService';
 
 const authApi = createApi({
     reducerPath: AuthRoutes.BasePrefix,
@@ -25,8 +26,7 @@ const authApi = createApi({
 
                     const { accessToken, refreshToken } = data.data.access;
 
-                    localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('refreshToken', refreshToken);
+                    AuthTokensService.setTokens(accessToken, refreshToken);
                 } catch (err) {
                     console.error('Failed to store tokens:', err);
                 }
@@ -36,7 +36,7 @@ const authApi = createApi({
             query: () => ({
                 url: AuthRoutes.RefreshToken,
                 method: 'PUT',
-                body: { token: localStorage.getItem('refreshToken') },
+                body: { token: AuthTokensService.getRefreshToken() },
             }),
             async onQueryStarted(_, { queryFulfilled }) {
                 try {
@@ -44,8 +44,7 @@ const authApi = createApi({
 
                     const { accessToken, refreshToken } = data.data.access;
 
-                    localStorage.setItem('accessToken', accessToken);
-                    localStorage.setItem('refreshToken', refreshToken);
+                    AuthTokensService.setTokens(accessToken, refreshToken);
                 } catch (err) {
                     console.error('Failed to store tokens:', err);
                 }

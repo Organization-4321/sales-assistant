@@ -6,12 +6,13 @@ import {
 } from '@reduxjs/toolkit/query';
 import authApi from './authApi';
 import { clearUser } from '../store/slices/currentUserSlice';
+import AuthTokensService from '../services/AuthTokensService';
 
 export const baseQueryWithAccessToken = (path: string) =>
     fetchBaseQuery({
         baseUrl: `${import.meta.env.VITE_BASE_API_URL}${path}`,
         prepareHeaders: (headers) => {
-            const token = localStorage.getItem('accessToken');
+            const token = AuthTokensService.getAccessToken();
 
             if (token) headers.set('Authorization', `Bearer ${token}`);
             return headers;
