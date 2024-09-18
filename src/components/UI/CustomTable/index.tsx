@@ -4,9 +4,14 @@ import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack
 interface ICustomTableProps<T extends object> {
     data: T[];
     columns: ColumnDef<T>[];
+    headerCellsVerticalAlign?: React.CSSProperties['verticalAlign'];
 }
 
-const CustomTable = <T extends object>({ data, columns }: ICustomTableProps<T>) => {
+const CustomTable = <T extends object>({
+    data,
+    columns,
+    headerCellsVerticalAlign,
+}: ICustomTableProps<T>) => {
     const table = useReactTable({
         data,
         columns,
@@ -19,7 +24,11 @@ const CustomTable = <T extends object>({ data, columns }: ICustomTableProps<T>) 
                 {table.getHeaderGroups().map((headerGroup) => (
                     <TableRow key={headerGroup.id}>
                         {headerGroup.headers.map((header) => (
-                            <TableCell key={header.id}>
+                            <TableCell
+                                key={header.id}
+                                sx={{
+                                    verticalAlign: headerCellsVerticalAlign,
+                                }}>
                                 {header.isPlaceholder
                                     ? null
                                     : flexRender(
