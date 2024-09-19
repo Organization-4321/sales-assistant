@@ -123,6 +123,13 @@ const createAppTheme = (mode: ITheme) => {
                     },
                 },
             },
+            MuiTableCell: {
+                styleOverrides: {
+                    root: {
+                        padding: theme.spacing(1),
+                    },
+                },
+            },
         },
     });
 };
