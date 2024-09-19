@@ -131,6 +131,15 @@ const createAppTheme = (mode: ITheme) => {
                     },
                 },
             },
+
+            MuiChip: {
+                styleOverrides: {
+                    root: {
+                        color: isDarkMode ? '#fff' : '#0e0e0f',
+                        backgroundColor: isDarkMode ? '#252733' : '#ebecf0',
+                    },
+                },
+            },
         },
     });
 };
