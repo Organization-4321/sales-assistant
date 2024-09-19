@@ -3,15 +3,15 @@ import { Box, Grid, TextField, Typography } from '@mui/material';
 import SortDirectionIcon from '../../../../components/icons/SortDirectionIcon';
 
 interface UpworkTitleHeaderProps {
-    id: string;
+    title: string;
 }
 
-const UpworkTitleHeader: FC<UpworkTitleHeaderProps> = ({ id }) => {
+const UpworkTitleHeader: FC<UpworkTitleHeaderProps> = ({ title }) => {
     return (
         <Grid container direction="column" gap={4}>
             <Grid item>
                 <Box display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography>{id}</Typography>
+                    <Typography>{title}</Typography>
                     <SortDirectionIcon />
                 </Box>
             </Grid>

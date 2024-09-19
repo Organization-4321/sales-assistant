@@ -5,14 +5,14 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
 interface UpworkPublishedHeaderProps {
-    id: string;
+    title: string;
 }
 
-const UpworkPublishedHeader: FC<UpworkPublishedHeaderProps> = ({ id }) => {
+const UpworkPublishedHeader: FC<UpworkPublishedHeaderProps> = ({ title }) => {
     return (
         <Box display="flex" flexDirection="column" gap={4}>
             <Box display="flex" justifyContent="space-between" alignItems="center">
-                <Typography>{id}</Typography>
+                <Typography>{title}</Typography>
                 <SortDirectionIcon />
             </Box>
             <DatePicker customInput={<TextField />} />

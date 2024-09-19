@@ -26,37 +26,35 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
     const columns: ColumnDef<IUpworkFeedItemDTO>[] = [
         {
             accessorKey: 'title',
-            header: (info) => <UpworkTitleHeader id={info.column.id} />,
+            header: () => <UpworkTitleHeader title="Title" />,
             cell: ({ row }) => <Link>{row.original.title}</Link>,
         },
         {
             accessorKey: 'published',
-            header: (info) => <UpworkPublishedHeader id={info.column.id} />,
+            header: () => <UpworkPublishedHeader title="Published" />,
             cell: (info) => info.getValue(),
         },
         {
             accessorKey: 'keywords',
-            header: (info) => (
-                <UpworkKeywordsHeader id={info.column.id} keywordsOptions={keywordsOptions} />
+            header: () => (
+                <UpworkKeywordsHeader title="Keywords" keywordsOptions={keywordsOptions} />
             ),
             cell: ({ row }) =>
                 row.original.keywords.map((keyword) => <Chip key={keyword} label={keyword} />),
         },
         {
             accessorKey: 'score',
-            header: (info) => (
-                <UpworkScoreHeader id={info.column.id} scoresOptions={scoresOptions} />
-            ),
+            header: () => <UpworkScoreHeader title="Score" scoresOptions={scoresOptions} />,
             cell: ({ row }) => <Chip label={row.original.score} />,
         },
         {
             accessorKey: 'matchedCases',
-            header: (info) => <Typography>{info.column.id}</Typography>,
+            header: () => <Typography>Matched cases</Typography>,
             cell: (info) => info.getValue(),
         },
         {
             accessorKey: 'matchedBlogs',
-            header: (info) => <Typography>{info.column.id}</Typography>,
+            header: () => <Typography>Matched blogs</Typography>,
             cell: (info) => info.getValue(),
         },
     ];

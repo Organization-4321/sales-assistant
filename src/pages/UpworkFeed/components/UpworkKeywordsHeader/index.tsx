@@ -4,15 +4,15 @@ import ReactSelect from 'react-select';
 import { IOptionInterface } from '../../../../interfaces-submodule/interfaces/dto/common/ioption.interface';
 
 interface UpworkKeywordsHeaderProps {
-    id: string;
+    title: string;
     keywordsOptions: IOptionInterface[];
 }
 
-const UpworkKeywordsHeader: FC<UpworkKeywordsHeaderProps> = ({ id, keywordsOptions }) => {
+const UpworkKeywordsHeader: FC<UpworkKeywordsHeaderProps> = ({ title, keywordsOptions }) => {
     return (
         <Box display="flex" flexDirection="column" gap={4}>
             <Box display="flex" justifyContent="space-between" alignItems="center">
-                <Typography>{id}</Typography>
+                <Typography>{title}</Typography>
             </Box>
             <ReactSelect options={keywordsOptions} />
         </Box>

@@ -5,16 +5,16 @@ import ReactSelect from 'react-select';
 import { IOptionInterface } from '../../../../interfaces-submodule/interfaces/dto/common/ioption.interface';
 
 interface UpworkScoreHeaderProps {
-    id: string;
+    title: string;
     scoresOptions: IOptionInterface[];
 }
 
-const UpworkScoreHeader: FC<UpworkScoreHeaderProps> = ({ id, scoresOptions }) => {
+const UpworkScoreHeader: FC<UpworkScoreHeaderProps> = ({ title, scoresOptions }) => {
     return (
         <Grid container direction="column" gap={4}>
             <Grid item>
                 <Box display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography>{id}</Typography>
+                    <Typography>{title}</Typography>
                     <SortDirectionIcon />
                 </Box>
             </Grid>
