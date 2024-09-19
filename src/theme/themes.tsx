@@ -127,6 +127,7 @@ const createAppTheme = (mode: ITheme) => {
                 styleOverrides: {
                     root: {
                         padding: theme.spacing(1),
+                        color: isDarkMode ? '#c9ced6' : '#414752',
                     },
                 },
             },
