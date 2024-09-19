@@ -128,6 +128,7 @@ const createAppTheme = (mode: ITheme) => {
                     root: {
                         padding: theme.spacing(1),
                         color: isDarkMode ? '#c9ced6' : '#414752',
+                        verticalAlign: 'top',
                     },
                 },
             },
