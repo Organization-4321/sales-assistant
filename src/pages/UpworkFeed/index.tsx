@@ -8,6 +8,7 @@ import UpworkTitleHeader from './components/UpworkTitleHeader';
 import UpworkPublishedHeader from './components/UpworkPublishedHeader';
 import UpworkScoreHeader from './components/UpworkScoreHeader';
 import UpworkKeywordsHeader from './components/UpworkKeywordsHeader';
+import moment, { MomentInput } from 'moment';
 
 interface UpworkFeedProps {}
 
@@ -32,7 +33,10 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         {
             accessorKey: 'published',
             header: () => <UpworkPublishedHeader title="Published" />,
-            cell: (info) => info.getValue(),
+            cell: (info) => {
+                const date = moment(info.getValue() as MomentInput);
+                return date.format('MM/DD/YYYY HH:mm');
+            },
         },
         {
             accessorKey: 'keywords',
