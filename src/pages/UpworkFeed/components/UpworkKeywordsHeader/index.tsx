@@ -12,7 +12,7 @@ const UpworkKeywordsHeader: FC<UpworkKeywordsHeaderProps> = ({ title, keywordsOp
     return (
         <Box display="flex" flexDirection="column" gap={4}>
             <Box display="flex" justifyContent="space-between" alignItems="center">
-                <Typography>{title}</Typography>
+                <Typography variant="subtitle2">{title}</Typography>
             </Box>
             <ReactSelect options={keywordsOptions} />
         </Box>

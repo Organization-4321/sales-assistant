@@ -12,7 +12,7 @@ const UpworkPublishedHeader: FC<UpworkPublishedHeaderProps> = ({ title }) => {
     return (
         <Box display="flex" flexDirection="column" gap={4}>
             <Box display="flex" justifyContent="space-between" alignItems="center">
-                <Typography>{title}</Typography>
+                <Typography variant="subtitle2">{title}</Typography>
                 <SortDirectionIcon />
             </Box>
             <DatePicker customInput={<TextField />} />

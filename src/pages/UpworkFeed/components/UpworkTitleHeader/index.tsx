@@ -11,7 +11,7 @@ const UpworkTitleHeader: FC<UpworkTitleHeaderProps> = ({ title }) => {
         <Grid container direction="column" gap={4}>
             <Grid item>
                 <Box display="flex" justifyContent="space-between" alignItems="center">
-                    <Typography>{title}</Typography>
+                    <Typography variant="subtitle2">{title}</Typography>
                     <SortDirectionIcon />
                 </Box>
             </Grid>
