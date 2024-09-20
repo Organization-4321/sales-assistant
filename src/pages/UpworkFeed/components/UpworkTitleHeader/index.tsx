@@ -1,6 +1,7 @@
 import { FC } from 'react';
-import { Box, Grid, TextField, Typography } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import SortDirectionIcon from '../../../../components/icons/SortDirectionIcon';
+import UpworkFeedInput from '../UpworkFeedInput';
 
 interface UpworkTitleHeaderProps {
     title: string;
@@ -16,14 +17,7 @@ const UpworkTitleHeader: FC<UpworkTitleHeaderProps> = ({ title }) => {
                 </Box>
             </Grid>
             <Grid item>
-                <TextField
-                    fullWidth
-                    InputProps={{
-                        sx(theme) {
-                            return { height: theme.spacing(5.5) };
-                        },
-                    }}
-                />
+                <UpworkFeedInput />
             </Grid>
         </Grid>
     );
