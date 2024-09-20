@@ -32,6 +32,7 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({}) => {
                     },
                 },
             ]}
+            enableTabLoop={false}
         />
     );
 };
