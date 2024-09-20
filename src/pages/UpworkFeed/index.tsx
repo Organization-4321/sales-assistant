@@ -53,12 +53,20 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         },
         {
             accessorKey: 'matchedCases',
-            header: () => <Typography>Matched cases</Typography>,
+            header: () => (
+                <Typography variant="subtitle2" sx={{ textAlign: 'right' }}>
+                    Matched cases
+                </Typography>
+            ),
             cell: (info) => info.getValue(),
         },
         {
             accessorKey: 'matchedBlogs',
-            header: () => <Typography>Matched blogs</Typography>,
+            header: () => (
+                <Typography variant="subtitle2" sx={{ textAlign: 'right' }}>
+                    Matched blogs
+                </Typography>
+            ),
             cell: (info) => info.getValue(),
         },
     ];
@@ -71,7 +79,7 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         <div>
             <Button onClick={refetchUpworkFeeds}>Refetch RSS</Button>
             {tableItems && tableItems?.length > 0 && (
-                <CustomTable data={tableItems} columns={columns} headerCellsVerticalAlign="top" />
+                <CustomTable data={tableItems} columns={columns} />
             )}
         </div>
     );
