@@ -16,7 +16,14 @@ const UpworkTitleHeader: FC<UpworkTitleHeaderProps> = ({ title }) => {
                 </Box>
             </Grid>
             <Grid item>
-                <TextField fullWidth />
+                <TextField
+                    fullWidth
+                    InputProps={{
+                        sx(theme) {
+                            return { height: theme.spacing(5.5) };
+                        },
+                    }}
+                />
             </Grid>
         </Grid>
     );
