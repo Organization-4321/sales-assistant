@@ -21,6 +21,8 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
 
     const tableItems = data?.data.items.items;
 
+    console.log(data);
+
     const scoresOptions = data?.data.scoreOptions ?? [];
     const keywordsOptions = data?.data.keywordsOptions ?? [];
 
@@ -58,7 +60,9 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
                     Matched cases
                 </Typography>
             ),
-            cell: (info) => info.getValue(),
+            cell: ({ row }) => (
+                <div style={{ textAlign: 'right' }}>{row.original.matchedCases}</div>
+            ),
         },
         {
             accessorKey: 'matchedBlogs',
@@ -67,7 +71,9 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
                     Matched blogs
                 </Typography>
             ),
-            cell: (info) => info.getValue(),
+            cell: ({ row }) => (
+                <div style={{ textAlign: 'right' }}>{row.original.matchedBlogs}</div>
+            ),
         },
     ];
 
