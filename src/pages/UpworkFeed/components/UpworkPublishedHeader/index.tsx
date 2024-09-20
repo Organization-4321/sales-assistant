@@ -15,7 +15,17 @@ const UpworkPublishedHeader: FC<UpworkPublishedHeaderProps> = ({ title }) => {
                 <Typography variant="subtitle2">{title}</Typography>
                 <SortDirectionIcon />
             </Box>
-            <DatePicker customInput={<TextField />} />
+            <DatePicker
+                customInput={
+                    <TextField
+                        InputProps={{
+                            sx(theme) {
+                                return { height: theme.spacing(5.5) };
+                            },
+                        }}
+                    />
+                }
+            />
         </Box>
     );
 };
