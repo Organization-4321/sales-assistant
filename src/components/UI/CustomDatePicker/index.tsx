@@ -22,6 +22,16 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({}) => {
             showPopperArrow={false}
             renderCustomHeader={(props) => <CustomDatePickerHeader {...props} />}
             calendarContainer={CustomDatePickerContainer}
+            popperPlacement="bottom-start"
+            popperModifiers={[
+                {
+                    name: 'offset',
+                    fn(state) {
+                        state.y -= 9;
+                        return state;
+                    },
+                },
+            ]}
         />
     );
 };
