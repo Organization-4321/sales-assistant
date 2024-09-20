@@ -9,6 +9,7 @@ import UpworkPublishedHeader from './components/UpworkPublishedHeader';
 import UpworkScoreHeader from './components/UpworkScoreHeader';
 import UpworkKeywordsHeader from './components/UpworkKeywordsHeader';
 import moment, { MomentInput } from 'moment';
+import UpworkKeywordsCell from './components/UpworkKeywordsCell';
 
 interface UpworkFeedProps {}
 
@@ -45,8 +46,7 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
             header: () => (
                 <UpworkKeywordsHeader title="Keywords" keywordsOptions={keywordsOptions} />
             ),
-            cell: ({ row }) =>
-                row.original.keywords.map((keyword) => <Chip key={keyword} label={keyword} />),
+            cell: ({ row }) => <UpworkKeywordsCell keywords={row.original.keywords} />,
         },
         {
             accessorKey: 'score',
