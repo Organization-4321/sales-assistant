@@ -7,3 +7,20 @@
     border-radius: 12px;
     padding: 12px 8px;
 }
+
+.react-datepicker__day-names {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.react-datepicker__day-name {
+    width: auto;
+    margin: 0;
+    padding: 8px 0;
+    font-family: 'Poppins', 'sans-serif';
+    font-size: 14px;
+    font-weight: 600;
+    color: #4d4d4d;
+    text-transform: uppercase;
+}
