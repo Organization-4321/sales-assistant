@@ -33,6 +33,8 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({}) => {
                 },
             ]}
             enableTabLoop={false}
+            useWeekdaysShort={true}
+            calendarStartDay={1}
         />
     );
 };
