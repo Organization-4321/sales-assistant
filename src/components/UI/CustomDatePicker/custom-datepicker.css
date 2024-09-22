@@ -59,6 +59,10 @@
     color: #fff;
 }
 
+.react-datepicker__day--selected.react-datepicker__day--today {
+    color: #414752;
+}
+
 .react-datepicker__day--today:hover {
     background-color: #fff;
 }
