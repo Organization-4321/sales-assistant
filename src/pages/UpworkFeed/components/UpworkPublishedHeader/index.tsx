@@ -1,8 +1,7 @@
-import { Box, TextField, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { FC } from 'react';
 import SortDirectionIcon from '../../../../components/icons/SortDirectionIcon';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
+import CustomDatePicker from '../../../../components/UI/CustomDatePicker';
 
 interface UpworkPublishedHeaderProps {
     title: string;
@@ -15,17 +14,7 @@ const UpworkPublishedHeader: FC<UpworkPublishedHeaderProps> = ({ title }) => {
                 <Typography variant="subtitle2">{title}</Typography>
                 <SortDirectionIcon />
             </Box>
-            <DatePicker
-                customInput={
-                    <TextField
-                        InputProps={{
-                            sx(theme) {
-                                return { height: theme.spacing(5.5) };
-                            },
-                        }}
-                    />
-                }
-            />
+            <CustomDatePicker />
         </Box>
     );
 };
