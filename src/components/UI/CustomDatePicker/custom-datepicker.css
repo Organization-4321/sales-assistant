@@ -55,8 +55,8 @@
     background-color: #fff;
 }
 
-.react-datepicker__day--today ~ * {
-    opacity: 0.5;
+.react-datepicker__day--selected {
+    color: #fff;
 }
 
 .react-datepicker__day--today:hover {
