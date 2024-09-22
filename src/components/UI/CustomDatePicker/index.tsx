@@ -2,7 +2,7 @@ import { FC } from 'react';
 import DatePicker, { DatePickerProps } from 'react-datepicker';
 import CustomDatePickerHeader from './components/CustomDatePickerHeader';
 import CustomDatePickerContainer from './components/CustomDatePickerContainer';
-import './customDatePicker.css';
+import './custom-datepicker.css';
 import { TextField } from '@mui/material';
 
 type CustomDatePickerProps = DatePickerProps & {};
