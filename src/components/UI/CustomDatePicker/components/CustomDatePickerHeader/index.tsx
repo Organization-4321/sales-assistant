@@ -18,7 +18,13 @@ const CustomDatePickerHeader: FC<ReactDatePickerCustomHeaderProps> = ({
                 </IconButton>
             </Grid>
             <Grid item>
-                <Typography variant="subtitle2">
+                <Typography
+                    variant="subtitle1"
+                    sx={{
+                        color: '#4d4d4d',
+                        fontSize: '0.875rem',
+                        fontWeight: 600,
+                    }}>
                     {date.toLocaleString('EN-GB', { month: 'long' })} {date.getFullYear()}
                 </Typography>
             </Grid>
