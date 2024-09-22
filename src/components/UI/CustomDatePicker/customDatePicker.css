@@ -11,11 +11,11 @@
 .react-datepicker__day-names {
     display: flex;
     justify-content: space-between;
-    gap: 4px;
 }
 
 .react-datepicker__day-name {
-    width: auto;
+    width: 40px;
+    height: 40px;
     margin: 0;
     padding: 8px 0;
     font-family: 'Poppins', 'sans-serif';
@@ -23,4 +23,42 @@
     font-weight: 600;
     color: #4d4d4d;
     text-transform: uppercase;
+}
+
+.react-datepicker__month {
+    margin: 0;
+}
+
+.react-datepicker__week {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.react-datepicker__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    font-family: 'Poppins', 'sans-serif';
+    color: #414752;
+    font-size: 0.875rem;
+    font-weight: 400;
+}
+
+.react-datepicker__day--today {
+    border: 2px solid #abbde0;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+.react-datepicker__day--today ~ * {
+    opacity: 0.5;
+}
+
+.react-datepicker__day--today:hover {
+    background-color: #fff;
 }
