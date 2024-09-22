@@ -5,9 +5,9 @@ import CustomDatePickerContainer from './components/CustomDatePickerContainer';
 import './custom-datepicker.css';
 import { TextField } from '@mui/material';
 
-type CustomDatePickerProps = DatePickerProps & {};
+type CustomDatePickerProps = DatePickerProps;
 
-const CustomDatePicker: FC<CustomDatePickerProps> = ({}) => {
+const CustomDatePicker: FC<CustomDatePickerProps> = (props) => {
     return (
         <DatePicker
             customInput={
@@ -35,6 +35,7 @@ const CustomDatePicker: FC<CustomDatePickerProps> = ({}) => {
             enableTabLoop={false}
             useWeekdaysShort={true}
             calendarStartDay={1}
+            {...props}
         />
     );
 };
