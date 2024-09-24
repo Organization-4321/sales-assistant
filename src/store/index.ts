@@ -13,7 +13,7 @@ export const store = configureStore({
         [upworkFeedsApi.reducerPath]: upworkFeedsApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat([
+        getDefaultMiddleware({ immutableCheck: false, serializableCheck: false }).concat([
             authApi.middleware,
             accountApi.middleware,
             upworkFeedsApi.middleware,
