@@ -35,7 +35,7 @@ const CustomSelect: FC<ICustomSelect> = ({ selectedOptions, setSelectedOptions, 
             }
             isSearchable={false}
             styles={{
-                option(base, props) {
+                option() {
                     return {};
                 },
             }}
