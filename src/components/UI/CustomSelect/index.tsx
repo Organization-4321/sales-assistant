@@ -30,6 +30,11 @@ const CustomSelect: FC<ICustomSelect> = ({ selectedOptions, setSelectedOptions, 
                 handleChangeSelectedOptions(newValue as MultiValue<IOptionInterface[]>)
             }
             isSearchable={false}
+            styles={{
+                option(base, props) {
+                    return {};
+                },
+            }}
             {...props}
         />
     );
