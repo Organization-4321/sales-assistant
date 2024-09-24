@@ -35,6 +35,7 @@ const CustomSelect: FC<ICustomSelect> = ({ selectedOptions, setSelectedOptions, 
                     return {};
                 },
             }}
+            filterOption={createFilter({ ignoreAccents: false })}
             {...props}
         />
     );
