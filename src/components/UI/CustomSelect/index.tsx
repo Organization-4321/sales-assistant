@@ -1,7 +1,8 @@
 import { FC } from 'react';
-import ReactSelect, { MultiValue, Props as SelectProps } from 'react-select';
+import ReactSelect, { createFilter, MultiValue, Props as SelectProps } from 'react-select';
 import CustomSelectDropdownIndicator from './components/CustomSelectDropdownIndicator';
 import { IOptionInterface } from '../../../interfaces-submodule/interfaces/dto/common/ioption.interface';
+import CustomSelectOption from './components/CustomSelectOption';
 
 interface ICustomSelect extends SelectProps {
     selectedOptions: MultiValue<IOptionInterface[]>;
@@ -19,6 +20,7 @@ const CustomSelect: FC<ICustomSelect> = ({ selectedOptions, setSelectedOptions, 
             hideSelectedOptions={false}
             closeMenuOnSelect={false}
             components={{
+                Option: CustomSelectOption,
                 DropdownIndicator: CustomSelectDropdownIndicator,
                 IndicatorSeparator: null,
                 ClearIndicator: () => null,
