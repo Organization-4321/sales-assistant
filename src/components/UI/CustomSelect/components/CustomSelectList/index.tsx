@@ -13,7 +13,11 @@ const CustomSelectList: FC<MenuListProps> = ({ children }) => {
                 children.length >= ROWS ? OPTION_HEIGHT * ROWS : children.length * OPTION_HEIGHT
             }
             itemCount={children.length}
-            itemSize={OPTION_HEIGHT}>
+            itemSize={OPTION_HEIGHT}
+            style={{
+                msOverflowStyle: 'none',
+                scrollbarWidth: 'none',
+            }}>
             {({ style, index }) => <div style={style}>{children[index]}</div>}
         </List>
     ) : (
