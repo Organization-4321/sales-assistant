@@ -20,6 +20,7 @@ const CustomSelect: FC<ICustomSelect> = ({ selectedOptions, setSelectedOptions, 
             isMulti
             hideSelectedOptions={false}
             closeMenuOnSelect={false}
+            menuIsOpen
             components={{
                 MenuList: CustomSelectList,
                 Option: CustomSelectOption,
@@ -35,9 +36,13 @@ const CustomSelect: FC<ICustomSelect> = ({ selectedOptions, setSelectedOptions, 
             }
             isSearchable={false}
             styles={{
-                option() {
-                    return {};
-                },
+                container: (base) => ({ ...base, minWidth: '124px' }),
+                control: (base) => ({ ...base, minHeight: '44px' }),
+                option: () => ({ width: 'max-content' }),
+                menu: (base) => ({
+                    ...base,
+                    minWidth: '240px',
+                }),
             }}
             filterOption={createFilter({ ignoreAccents: false })}
             {...props}
