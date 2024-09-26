@@ -1,9 +1,10 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import ReactSelect, { createFilter, Props as SelectProps } from 'react-select';
 import CustomSelectDropdownIndicator from './components/CustomSelectDropdownIndicator';
 import { IOptionInterface } from '../../../interfaces-submodule/interfaces/dto/common/ioption.interface';
 import CustomSelectOption from './components/CustomSelectOption';
 import CustomSelectListWrapper from './components/CustomSelectListWrapper';
+import useControlSelectOptions from './hooks/useControlSelectOptions';
 
 interface ICustomSelect extends SelectProps {
     options: IOptionInterface[];
@@ -17,25 +18,8 @@ const CustomSelect: FC<ICustomSelect> = ({
     setSelectedOptions,
     ...props
 }) => {
-    const [allOptionsSelected, setAllOptionsSelected] = useState(
-        selectedOptions.length === options.length,
-    );
-
-    const handleChangeSelectedOptions = (newValue: IOptionInterface[]) => {
-        if (newValue.length === options.length) setAllOptionsSelected(true);
-        else setAllOptionsSelected(false);
-
-        setSelectedOptions(newValue);
-    };
-
-    const handleToggleAllOptionsSelected = (
-        event: React.ChangeEvent<HTMLInputElement>,
-        checked: boolean,
-    ) => {
-        setAllOptionsSelected(checked);
-        if (checked) setSelectedOptions(options);
-        else setSelectedOptions([]);
-    };
+    const { allOptionsSelected, handleChangeSelectedOptions, handleToggleAllOptionsSelected } =
+        useControlSelectOptions(options, selectedOptions, setSelectedOptions);
 
     return (
         <ReactSelect
