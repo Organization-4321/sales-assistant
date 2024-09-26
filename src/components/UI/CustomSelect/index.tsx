@@ -43,7 +43,11 @@ const CustomSelect: FC<ICustomSelect> = ({
                 IndicatorSeparator: null,
                 ClearIndicator: () => null,
                 MultiValue: ({ index }) => {
-                    return index === 0 ? `${selectedOptions.length} selected` : null;
+                    return index === 0
+                        ? selectedOptions.length === options.length
+                            ? 'ALL'
+                            : `${selectedOptions.length} selected`
+                        : null;
                 },
             }}
             onChange={(newValue) => handleChangeSelectedOptions(newValue as IOptionInterface[])}
