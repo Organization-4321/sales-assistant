@@ -1,29 +1,60 @@
-import { FC } from 'react';
-import ReactSelect, { createFilter, MultiValue, Props as SelectProps } from 'react-select';
+import { FC, useState } from 'react';
+import ReactSelect, { createFilter, Props as SelectProps } from 'react-select';
 import CustomSelectDropdownIndicator from './components/CustomSelectDropdownIndicator';
 import { IOptionInterface } from '../../../interfaces-submodule/interfaces/dto/common/ioption.interface';
 import CustomSelectOption from './components/CustomSelectOption';
-import CustomSelectList from './components/CustomSelectList';
+import CustomSelectListWrapper from './components/CustomSelectListWrapper';
 
 interface ICustomSelect extends SelectProps {
-    selectedOptions: MultiValue<IOptionInterface[]>;
-    setSelectedOptions: React.Dispatch<React.SetStateAction<MultiValue<IOptionInterface[]>>>;
+    options: IOptionInterface[];
+    selectedOptions: IOptionInterface[];
+    setSelectedOptions: React.Dispatch<React.SetStateAction<IOptionInterface[]>>;
 }
 
-const CustomSelect: FC<ICustomSelect> = ({ selectedOptions, setSelectedOptions, ...props }) => {
-    const handleChangeSelectedOptions = (newValue: MultiValue<IOptionInterface[]>) => {
+const CustomSelect: FC<ICustomSelect> = ({
+    options,
+    selectedOptions,
+    setSelectedOptions,
+    ...props
+}) => {
+    const [allOptionsSelected, setAllOptionsSelected] = useState(
+        selectedOptions.length === options.length,
+    );
+
+    const handleChangeSelectedOptions = (newValue: IOptionInterface[]) => {
+        if (newValue.length === options.length) setAllOptionsSelected(true);
+        else setAllOptionsSelected(false);
+
         setSelectedOptions(newValue);
+    };
+
+    const handleToggleAllOptionsSelected = (
+        event: React.ChangeEvent<HTMLInputElement>,
+        checked: boolean,
+    ) => {
+        setAllOptionsSelected(checked);
+        if (checked) setSelectedOptions(options);
+        else setSelectedOptions([]);
     };
 
     return (
         <ReactSelect
             isMulti
+            value={selectedOptions}
             hideSelectedOptions={false}
             closeMenuOnSelect={false}
             menuIsOpen
             components={{
-                MenuList: CustomSelectList,
-                Option: CustomSelectOption,
+                MenuList: (props) => (
+                    <CustomSelectListWrapper
+                        allOptionsSelected={allOptionsSelected}
+                        handleToggleAllOptionsSelected={handleToggleAllOptionsSelected}
+                        {...props}
+                    />
+                ),
+                Option: (props) => (
+                    <CustomSelectOption isAllSelected={allOptionsSelected} {...props} />
+                ),
                 DropdownIndicator: CustomSelectDropdownIndicator,
                 IndicatorSeparator: null,
                 ClearIndicator: () => null,
@@ -31,9 +62,7 @@ const CustomSelect: FC<ICustomSelect> = ({ selectedOptions, setSelectedOptions, 
                     return index === 0 ? `${selectedOptions.length} selected` : null;
                 },
             }}
-            onChange={(newValue) =>
-                handleChangeSelectedOptions(newValue as MultiValue<IOptionInterface[]>)
-            }
+            onChange={(newValue) => handleChangeSelectedOptions(newValue as IOptionInterface[])}
             isSearchable={false}
             styles={{
                 container: (base) => ({ ...base, minWidth: '124px' }),
@@ -45,6 +74,7 @@ const CustomSelect: FC<ICustomSelect> = ({ selectedOptions, setSelectedOptions, 
                 }),
             }}
             filterOption={createFilter({ ignoreAccents: false })}
+            options={options}
             {...props}
         />
     );
