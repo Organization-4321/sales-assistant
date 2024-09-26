@@ -2,15 +2,19 @@ import { FC } from 'react';
 import { Checkbox } from '@mui/material';
 import { components, OptionProps } from 'react-select';
 
-const CustomSelectOption: FC<OptionProps> = (props) => {
+interface ICustomSelectOptionProps extends OptionProps {
+    isAllSelected: boolean;
+}
+
+const CustomSelectOption: FC<ICustomSelectOptionProps> = (props) => {
     const { onMouseMove, onMouseOver, ...rest } = props.innerProps;
     const newProps = { ...props, innerProps: rest };
 
-    const { isSelected } = props;
+    const { isSelected, isAllSelected } = props;
 
     return (
         <components.Option {...newProps}>
-            <Checkbox checked={isSelected} name={props.label} />
+            <Checkbox checked={isSelected || isAllSelected} name={props.label} />
             {props.children}
         </components.Option>
     );
