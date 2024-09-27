@@ -9,9 +9,12 @@ const ROWS = 6;
 const CustomSelectList: FC<MenuListProps> = ({ getValue, options, children }) => {
     const selectedValues = getValue() as IOptionInterface[];
 
-    const initialOffset = selectedValues[selectedValues.length - 1]
-        ? options.indexOf(selectedValues[selectedValues.length - 1]) * OPTION_HEIGHT
-        : 0;
+    const initialOffset =
+        options.indexOf(selectedValues[selectedValues.length - 1]) <= ROWS - 1
+            ? 0
+            : selectedValues[selectedValues.length - 1]
+            ? options.indexOf(selectedValues[selectedValues.length - 1]) * OPTION_HEIGHT
+            : 0;
 
     return Array.isArray(children) ? (
         <List
