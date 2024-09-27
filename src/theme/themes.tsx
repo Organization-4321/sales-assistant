@@ -141,6 +141,13 @@ const createAppTheme = (mode: ITheme) => {
                     },
                 },
             },
+            MuiFormControlLabel: {
+                styleOverrides: {
+                    root: {
+                        margin: 0,
+                    },
+                },
+            },
         },
     });
 };
