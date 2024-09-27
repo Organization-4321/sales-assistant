@@ -17,7 +17,7 @@ const CustomSelectListWrapper: FC<CustomSelectListWrapperProps> = ({
     ...customSelectListProps
 }) => {
     return (
-        <Box>
+        <Box sx={{ px: 1.25, py: 1 }}>
             <FormControlLabel
                 control={
                     <Checkbox
