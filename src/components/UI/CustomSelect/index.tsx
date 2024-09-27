@@ -5,6 +5,8 @@ import { IOptionInterface } from '../../../interfaces-submodule/interfaces/dto/c
 import CustomSelectOption from './components/CustomSelectOption';
 import CustomSelectListWrapper from './components/CustomSelectListWrapper';
 import useControlSelectOptions from './hooks/useControlSelectOptions';
+import { useTheme } from '@emotion/react';
+import { Theme } from '@mui/material';
 
 interface ICustomSelect extends SelectProps {
     options: IOptionInterface[];
@@ -20,6 +22,10 @@ const CustomSelect: FC<ICustomSelect> = ({
 }) => {
     const { allOptionsSelected, handleChangeSelectedOptions, handleToggleAllOptionsSelected } =
         useControlSelectOptions(options, selectedOptions, setSelectedOptions);
+
+    const {
+        palette: { mode },
+    } = useTheme() as Theme;
 
     return (
         <ReactSelect
@@ -54,10 +60,16 @@ const CustomSelect: FC<ICustomSelect> = ({
             isSearchable={false}
             styles={{
                 container: (base) => ({ ...base, minWidth: '124px' }),
-                control: (base) => ({ ...base, minHeight: '44px' }),
+                control: (base) => ({
+                    ...base,
+                    minHeight: '44px',
+                    background: 'inherit',
+                    color: mode === 'dark' ? '#fff' : '#131314',
+                }),
                 option: () => ({ width: 'max-content' }),
                 menu: (base) => ({
                     ...base,
+                    background: mode === 'dark' ? '#2b2b2b' : '#fff',
                     minWidth: '240px',
                 }),
             }}
