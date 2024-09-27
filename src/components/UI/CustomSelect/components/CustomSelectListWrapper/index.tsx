@@ -2,6 +2,7 @@ import { Box, Checkbox, Divider, FormControlLabel } from '@mui/material';
 import { FC } from 'react';
 import CustomSelectList from '../CustomSelectList';
 import { MenuListProps } from 'react-select';
+import UncheckedIcon from '../../../../icons/UncheckedIcon';
 
 interface CustomSelectListWrapperProps extends MenuListProps {
     allOptionsSelected: boolean;
@@ -22,6 +23,7 @@ const CustomSelectListWrapper: FC<CustomSelectListWrapperProps> = ({
                     <Checkbox
                         checked={allOptionsSelected}
                         onChange={handleToggleAllOptionsSelected}
+                        icon={<UncheckedIcon />}
                     />
                 }
                 label="ALL"
