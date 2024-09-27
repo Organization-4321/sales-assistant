@@ -33,7 +33,6 @@ const CustomSelect: FC<ICustomSelect> = ({
             value={selectedOptions}
             hideSelectedOptions={false}
             closeMenuOnSelect={false}
-            menuIsOpen
             components={{
                 MenuList: (props) => (
                     <CustomSelectListWrapper
