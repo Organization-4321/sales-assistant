@@ -146,6 +146,11 @@ const createAppTheme = (mode: ITheme) => {
                     root: {
                         margin: 0,
                     },
+                    label: {
+                        fontWeight: 500,
+                        fontSize: '0.875rem',
+                        color: isDarkMode ? '#fff' : '#0e0e0f',
+                    },
                 },
             },
         },
