@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Checkbox } from '@mui/material';
+import { Checkbox, FormControlLabel } from '@mui/material';
 import { components, OptionProps } from 'react-select';
 
 interface ICustomSelectOptionProps extends OptionProps {
@@ -14,8 +14,10 @@ const CustomSelectOption: FC<ICustomSelectOptionProps> = (props) => {
 
     return (
         <components.Option {...newProps}>
-            <Checkbox checked={isSelected || isAllSelected} name={props.label} />
-            {props.children}
+            <FormControlLabel
+                control={<Checkbox checked={isSelected || isAllSelected} />}
+                label={props.children}
+            />
         </components.Option>
     );
 };
