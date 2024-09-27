@@ -6,7 +6,13 @@ import { IOptionInterface } from '../../../../../interfaces-submodule/interfaces
 const OPTION_HEIGHT = 48;
 const ROWS = 6;
 
-const CustomSelectList: FC<MenuListProps> = ({ children }) => {
+const CustomSelectList: FC<MenuListProps> = ({ getValue, options, children }) => {
+    const selectedValues = getValue() as IOptionInterface[];
+
+    const initialOffset = selectedValues[selectedValues.length - 1]
+        ? options.indexOf(selectedValues[selectedValues.length - 1]) * OPTION_HEIGHT
+        : 0;
+
     return Array.isArray(children) ? (
         <List
             width="100%"
@@ -18,7 +24,8 @@ const CustomSelectList: FC<MenuListProps> = ({ children }) => {
             style={{
                 msOverflowStyle: 'none',
                 scrollbarWidth: 'none',
-            }}>
+            }}
+            initialScrollOffset={initialOffset}>
             {({ style, index }) => (
                 <div style={{ ...style, display: 'flex', alignItems: 'center' }}>
                     {children[index]}
