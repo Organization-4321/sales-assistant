@@ -156,8 +156,8 @@ const createAppTheme = (mode: ITheme) => {
             MuiCheckbox: {
                 styleOverrides: {
                     root: {
-                        paddingTop: theme.spacing(1),
-                        paddingBottom: theme.spacing(1),
+                        paddingTop: theme.spacing(1.5),
+                        paddingBottom: theme.spacing(1.5),
                         paddingRight: theme.spacing(1),
                         paddingLeft: theme.spacing(0.25),
                     },
