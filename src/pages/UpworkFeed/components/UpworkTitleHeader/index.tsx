@@ -5,9 +5,11 @@ import UpworkFeedInput from '../UpworkFeedInput';
 
 interface UpworkTitleHeaderProps {
     title: string;
+    inputValue: string;
+    setInputValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const UpworkTitleHeader: FC<UpworkTitleHeaderProps> = ({ title }) => {
+const UpworkTitleHeader: FC<UpworkTitleHeaderProps> = ({ title, inputValue, setInputValue }) => {
     return (
         <Grid container direction="column" gap={4}>
             <Grid item>
@@ -17,7 +19,11 @@ const UpworkTitleHeader: FC<UpworkTitleHeaderProps> = ({ title }) => {
                 </Box>
             </Grid>
             <Grid item>
-                <UpworkFeedInput />
+                <UpworkFeedInput
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onClearIconClick={() => setInputValue('')}
+                />
             </Grid>
         </Grid>
     );
