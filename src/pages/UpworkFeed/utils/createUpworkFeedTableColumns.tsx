@@ -18,11 +18,12 @@ const createUpworkFeedTableColumns = (): ColumnDef<IUpworkFeedItemDTO>[] => [
     },
     {
         accessorKey: 'keywords',
-        cell: ({ row }) => <UpworkKeywordsCell keywords={row.original.keywords} />,
+        cell: ({ row }) =>
+            row.original.keywords && <UpworkKeywordsCell keywords={row.original.keywords} />,
     },
     {
         accessorKey: 'score',
-        cell: ({ row }) => <Chip label={row.original.score} />,
+        cell: ({ row }) => row.original.score && <Chip label={row.original.score} />,
     },
     {
         accessorKey: 'matchedCases',
