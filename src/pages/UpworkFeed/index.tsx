@@ -1,19 +1,20 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useMemo, useState } from 'react';
 import { useGetUpworkFeedsMutation } from '../../api/upworkFeedsApi';
+import CustomTable from './components/CustomTable';
+import { Button } from '@mui/material';
 import { ColumnDef } from '@tanstack/react-table';
 import { IUpworkFeedItemDTO } from '../../interfaces-submodule/interfaces/dto/upwork-feed/iupwork-feed-item.dto';
-import CustomTable from '../../components/UI/CustomTable';
-import { Button, Chip, Link, Typography } from '@mui/material';
-import UpworkTitleHeader from './components/UpworkTitleHeader';
-import UpworkPublishedHeader from './components/UpworkPublishedHeader';
-import UpworkScoreHeader from './components/UpworkScoreHeader';
-import UpworkKeywordsHeader from './components/UpworkKeywordsHeader';
-import moment, { MomentInput } from 'moment';
-import UpworkKeywordsCell from './components/UpworkKeywordsCell';
+import createUpworkFeedTableColumns from './utils/createUpworkFeedTableColumns';
+import { IOptionInterface } from '../../interfaces-submodule/interfaces/dto/common/ioption.interface';
 
 interface UpworkFeedProps {}
 
 const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
+    const [title, setTitle] = useState('');
+    const [published, setPublished] = useState<Date | null>(new Date());
+    const [selectedKeywordsOptions, setSelectedKeywordsOptions] = useState<IOptionInterface[]>([]);
+    const [selectedScoresOptions, setSelectedScoresOptions] = useState<IOptionInterface[]>([]);
+
     const [getUpworkFeeds, { data }] = useGetUpworkFeedsMutation();
 
     useEffect(() => {
@@ -40,7 +41,20 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         <div>
             <Button onClick={refetchUpworkFeeds}>Refetch RSS</Button>
             {tableItems && tableItems?.length > 0 && (
-                <CustomTable data={tableItems} columns={columns} />
+                <CustomTable
+                    data={tableItems}
+                    columns={columns}
+                    title={title}
+                    setTitle={setTitle}
+                    keywordsOptions={keywordsOptions}
+                    scoresOptions={scoresOptions}
+                    selectedKeywordsOptions={selectedKeywordsOptions}
+                    setSelectedKeywordsOptions={setSelectedKeywordsOptions}
+                    selectedScoresOptions={selectedScoresOptions}
+                    setSelectedScoresOptions={setSelectedScoresOptions}
+                    published={published}
+                    setPublished={setPublished}
+                />
             )}
         </div>
     );
