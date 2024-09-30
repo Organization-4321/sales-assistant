@@ -27,55 +27,10 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
     const scoresOptions = data?.data.scoreOptions ?? [];
     const keywordsOptions = data?.data.keywordsOptions ?? [];
 
-    const columns: ColumnDef<IUpworkFeedItemDTO>[] = [
-        {
-            accessorKey: 'title',
-            header: () => <UpworkTitleHeader title="Title" />,
-            cell: ({ row }) => <Link>{row.original.title}</Link>,
-        },
-        {
-            accessorKey: 'published',
-            header: () => <UpworkPublishedHeader title="Published" />,
-            cell: (info) => {
-                const date = moment(info.getValue() as MomentInput);
-                return date.format('MM/DD/YYYY HH:mm');
-            },
-        },
-        {
-            accessorKey: 'keywords',
-            header: () => (
-                <UpworkKeywordsHeader title="Keywords" keywordsOptions={keywordsOptions} />
-            ),
-            cell: ({ row }) => <UpworkKeywordsCell keywords={row.original.keywords} />,
-        },
-        {
-            accessorKey: 'score',
-            header: () => <UpworkScoreHeader title="Score" scoresOptions={scoresOptions} />,
-            cell: ({ row }) => <Chip label={row.original.score} />,
-        },
-        {
-            accessorKey: 'matchedCases',
-            header: () => (
-                <Typography variant="subtitle2" sx={{ textAlign: 'right' }}>
-                    Matched cases
-                </Typography>
-            ),
-            cell: ({ row }) => (
-                <div style={{ textAlign: 'right' }}>{row.original.matchedCases}</div>
-            ),
-        },
-        {
-            accessorKey: 'matchedBlogs',
-            header: () => (
-                <Typography variant="subtitle2" sx={{ textAlign: 'right' }}>
-                    Matched blogs
-                </Typography>
-            ),
-            cell: ({ row }) => (
-                <div style={{ textAlign: 'right' }}>{row.original.matchedBlogs}</div>
-            ),
-        },
-    ];
+    const columns: ColumnDef<IUpworkFeedItemDTO>[] = useMemo(
+        () => createUpworkFeedTableColumns(),
+        [],
+    );
 
     const refetchUpworkFeeds = () => {
         getUpworkFeeds({ pageSize: 5, pageNumber: 1 });
