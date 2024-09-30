@@ -1,10 +1,11 @@
-import { Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
-import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import { Table, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { ColumnDef, getCoreRowModel, useReactTable } from '@tanstack/react-table';
 import { IOptionInterface } from '../../../../interfaces-submodule/interfaces/dto/common/ioption.interface';
 import UpworkTitleHeader from '../UpworkTitleHeader';
 import UpworkPublishedHeader from '../UpworkPublishedHeader';
 import UpworkKeywordsHeader from '../UpworkKeywordsHeader';
 import UpworkScoreHeader from '../UpworkScoreHeader';
+import MemoizedTableBody from './MemoizedTableBody';
 
 interface ICustomTableProps<T extends object> {
     data: T[];
@@ -101,17 +102,7 @@ const CustomTable = <T extends object>({
                     </TableRow>
                 ))}
             </TableHead>
-            <TableBody>
-                {table.getRowModel().rows.map((row) => (
-                    <TableRow key={row.id}>
-                        {row.getVisibleCells().map((cell) => (
-                            <TableCell key={cell.id}>
-                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                            </TableCell>
-                        ))}
-                    </TableRow>
-                ))}
-            </TableBody>
+            <MemoizedTableBody rows={table.getRowModel().rows} />
         </Table>
     );
 };
