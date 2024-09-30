@@ -10,6 +10,7 @@ const UpworkFeedInput: FC<IUpworkFeedInputProps> = ({ onClearIconClick, ...other
     return (
         <TextField
             fullWidth
+            autoComplete="off"
             InputProps={{
                 sx(theme) {
                     return { height: theme.spacing(5.5) };
