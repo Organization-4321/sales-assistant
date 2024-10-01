@@ -30,7 +30,7 @@ const CustomSelect: FC<ICustomSelect> = ({
     return (
         <ReactSelect
             isMulti
-            value={selectedOptions}
+            defaultValue={{}}
             hideSelectedOptions={false}
             closeMenuOnSelect={false}
             components={{
