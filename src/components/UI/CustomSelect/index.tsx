@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import ReactSelect, { createFilter, Props as SelectProps } from 'react-select';
+import ReactSelect, { ActionMeta, createFilter, Props as SelectProps } from 'react-select';
 import CustomSelectDropdownIndicator from './components/CustomSelectDropdownIndicator';
 import { IOptionInterface } from '../../../interfaces-submodule/interfaces/dto/common/ioption.interface';
 import CustomSelectOption from './components/CustomSelectOption';
@@ -41,8 +41,12 @@ const CustomSelect: FC<ICustomSelect> = ({
                         {...props}
                     />
                 ),
-                Option: (props) => (
-                    <CustomSelectOption isAllSelected={allOptionsSelected} {...props} />
+                Option: ({ isSelected, ...props }) => (
+                    <CustomSelectOption
+                        {...props}
+                        isAllSelected={allOptionsSelected}
+                        isSelected={selectedOptions.some((el) => el.value === props.children)}
+                    />
                 ),
                 DropdownIndicator: CustomSelectDropdownIndicator,
                 IndicatorSeparator: null,
@@ -55,7 +59,12 @@ const CustomSelect: FC<ICustomSelect> = ({
                         : null;
                 },
             }}
-            onChange={(newValue) => handleChangeSelectedOptions(newValue as IOptionInterface[])}
+            onChange={(newValue, actionMeta) =>
+                handleChangeSelectedOptions(
+                    newValue as IOptionInterface[],
+                    actionMeta as ActionMeta<IOptionInterface>,
+                )
+            }
             isSearchable={false}
             styles={{
                 container: (base) => ({ ...base, minWidth: '124px' }),
