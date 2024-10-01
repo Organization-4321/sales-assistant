@@ -53,7 +53,7 @@ const CustomSelect: FC<ICustomSelect> = ({
                 ClearIndicator: () => null,
                 MultiValue: ({ index }) => {
                     return index === 0
-                        ? selectedOptions.length === options.length
+                        ? selectedOptions.length === options.length || allOptionsSelected
                             ? 'ALL'
                             : `${selectedOptions.length} selected`
                         : null;
