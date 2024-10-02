@@ -3,6 +3,7 @@ import { IUpworkFeedItemDTO } from '../../../interfaces-submodule/interfaces/dto
 import { Chip, Link } from '@mui/material';
 import moment, { MomentInput } from 'moment';
 import UpworkKeywordsCell from '../components/UpworkKeywordsCell';
+import UpworkReactionCell from '../components/UpworkReactionCell';
 
 const createUpworkFeedTableColumns = (): ColumnDef<IUpworkFeedItemDTO>[] => [
     {
@@ -24,6 +25,11 @@ const createUpworkFeedTableColumns = (): ColumnDef<IUpworkFeedItemDTO>[] => [
     {
         accessorKey: 'score',
         cell: ({ row }) => row.original.score && <Chip label={row.original.score} />,
+    },
+    {
+        accessorKey: 'review',
+        cell: ({ row }) =>
+            row.original.review && <UpworkReactionCell type={row.original.review.type} />,
     },
     {
         accessorKey: 'matchedCases',

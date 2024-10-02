@@ -9,6 +9,7 @@ interface IUpworkFeedRefetchSearchParams {
     published: Date | null;
     selectedKeywordsOptions: IOptionInterface[];
     selectedScoresOptions: IOptionInterface[];
+    selectedReactionsOptions: IOptionInterface[];
 }
 
 const useUpworkFeedRequests = (refetchSearchParams: IUpworkFeedRefetchSearchParams) => {
@@ -19,8 +20,13 @@ const useUpworkFeedRequests = (refetchSearchParams: IUpworkFeedRefetchSearchPara
     }, []);
 
     const refetchUpworkFeeds = () => {
-        const { title, published, selectedKeywordsOptions, selectedScoresOptions } =
-            refetchSearchParams;
+        const {
+            title,
+            published,
+            selectedKeywordsOptions,
+            selectedScoresOptions,
+            selectedReactionsOptions,
+        } = refetchSearchParams;
 
         const searchParameters = [
             title && { searchBy: UpworkFeedSearchBy.Title, searchQuery: title },
@@ -35,6 +41,10 @@ const useUpworkFeedRequests = (refetchSearchParams: IUpworkFeedRefetchSearchPara
             selectedScoresOptions.length > 0 && {
                 searchBy: UpworkFeedSearchBy.Score,
                 searchQuery: selectedScoresOptions.map((option) => option.value),
+            },
+            selectedReactionsOptions.length > 0 && {
+                searchBy: UpworkFeedSearchBy.Review,
+                searchQuery: selectedReactionsOptions.map((option) => option.value),
             },
         ].reduce<ISearchParameterDTO<UpworkFeedSearchBy>[]>((acc, param) => {
             if (param) acc.push(param);

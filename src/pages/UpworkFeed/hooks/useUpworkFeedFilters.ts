@@ -6,6 +6,9 @@ const useUpworkFeedFilters = () => {
     const [published, setPublished] = useState<Date | null>(null);
     const [selectedKeywordsOptions, setSelectedKeywordsOptions] = useState<IOptionInterface[]>([]);
     const [selectedScoresOptions, setSelectedScoresOptions] = useState<IOptionInterface[]>([]);
+    const [selectedReactionsOptions, setSelectedReactionsOptions] = useState<IOptionInterface[]>(
+        [],
+    );
 
     return {
         title,
@@ -16,6 +19,8 @@ const useUpworkFeedFilters = () => {
         setSelectedKeywordsOptions,
         selectedScoresOptions,
         setSelectedScoresOptions,
+        selectedReactionsOptions,
+        setSelectedReactionsOptions,
     };
 };
 

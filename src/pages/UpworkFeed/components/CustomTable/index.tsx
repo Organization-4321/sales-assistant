@@ -6,6 +6,7 @@ import UpworkPublishedHeader from '../UpworkPublishedHeader';
 import UpworkKeywordsHeader from '../UpworkKeywordsHeader';
 import UpworkScoreHeader from '../UpworkScoreHeader';
 import MemoizedTableBody from './MemoizedTableBody';
+import UpworkReactionHeader from '../UpworkReactionHeader';
 
 interface ICustomTableProps<T extends object> {
     data: T[];
@@ -20,6 +21,9 @@ interface ICustomTableProps<T extends object> {
     setSelectedScoresOptions: React.Dispatch<React.SetStateAction<IOptionInterface[]>>;
     published: Date | null;
     setPublished: React.Dispatch<React.SetStateAction<Date | null>>;
+    reactionsOptions: IOptionInterface[];
+    selectedReactionsOptions: IOptionInterface[];
+    setSelectedReactionsOptions: React.Dispatch<React.SetStateAction<IOptionInterface[]>>;
 }
 
 const CustomTable = <T extends object>({
@@ -35,6 +39,9 @@ const CustomTable = <T extends object>({
     setSelectedScoresOptions,
     published,
     setPublished,
+    reactionsOptions,
+    selectedReactionsOptions,
+    setSelectedReactionsOptions,
 }: ICustomTableProps<T>) => {
     const table = useReactTable({
         data,
@@ -79,6 +86,14 @@ const CustomTable = <T extends object>({
                                                 scoresOptions={scoresOptions}
                                                 selectedOptions={selectedScoresOptions}
                                                 setSelectedOptions={setSelectedScoresOptions}
+                                            />
+                                        ),
+                                        review: (
+                                            <UpworkReactionHeader
+                                                title="Reaction"
+                                                options={reactionsOptions}
+                                                selectedOptions={selectedReactionsOptions}
+                                                setSelectedOptions={setSelectedReactionsOptions}
                                             />
                                         ),
                                         matchedCases: (

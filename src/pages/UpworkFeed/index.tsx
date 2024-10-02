@@ -17,6 +17,8 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         setSelectedKeywordsOptions,
         setSelectedScoresOptions,
         selectedScoresOptions,
+        selectedReactionsOptions,
+        setSelectedReactionsOptions,
     } = useUpworkFeedFilters();
 
     const { data, refetchUpworkFeeds } = useUpworkFeedRequests({
@@ -24,9 +26,11 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         published,
         selectedKeywordsOptions,
         selectedScoresOptions,
+        selectedReactionsOptions,
     });
 
-    const { tableItems, keywordsOptions, scoresOptions, columns } = useUpworkFeedTable(data);
+    const { tableItems, keywordsOptions, scoresOptions, reactionsOptions, columns } =
+        useUpworkFeedTable(data);
 
     return (
         <div>
@@ -44,6 +48,9 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
                 setSelectedScoresOptions={setSelectedScoresOptions}
                 published={published}
                 setPublished={setPublished}
+                reactionsOptions={reactionsOptions}
+                selectedReactionsOptions={selectedReactionsOptions}
+                setSelectedReactionsOptions={setSelectedReactionsOptions}
             />
         </div>
     );
