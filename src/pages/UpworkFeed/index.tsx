@@ -1,9 +1,9 @@
-import { FC, useEffect } from 'react';
-import { useGetUpworkFeedsMutation } from '../../api/upworkFeedsApi';
+import { FC } from 'react';
 import CustomTable from './components/CustomTable';
 import { Button } from '@mui/material';
 import useUpworkFeedFilters from './hooks/useUpworkFeedFilters';
 import useUpworkFeedTable from './hooks/useUpworkFeedTable';
+import useUpworkFeedRequests from './hooks/useUpworkFeedRequests';
 
 interface UpworkFeedProps {}
 
@@ -19,17 +19,9 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         selectedScoresOptions,
     } = useUpworkFeedFilters();
 
-    const [getUpworkFeeds, { data }] = useGetUpworkFeedsMutation();
-
-    useEffect(() => {
-        getUpworkFeeds({ pageSize: 10, pageNumber: 1 });
-    }, []);
+    const { data, refetchUpworkFeeds } = useUpworkFeedRequests();
 
     const { tableItems, keywordsOptions, scoresOptions, columns } = useUpworkFeedTable(data);
-
-    const refetchUpworkFeeds = () => {
-        getUpworkFeeds({ pageSize: 5, pageNumber: 1 });
-    };
 
     return (
         <div>
