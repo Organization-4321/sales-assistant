@@ -19,7 +19,12 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         selectedScoresOptions,
     } = useUpworkFeedFilters();
 
-    const { data, refetchUpworkFeeds } = useUpworkFeedRequests();
+    const { data, refetchUpworkFeeds } = useUpworkFeedRequests({
+        title,
+        published,
+        selectedKeywordsOptions,
+        selectedScoresOptions,
+    });
 
     const { tableItems, keywordsOptions, scoresOptions, columns } = useUpworkFeedTable(data);
 
