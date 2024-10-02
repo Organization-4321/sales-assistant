@@ -11,7 +11,7 @@ const fillColors = {
 const SortDirectionIcon: FC<SvgIconProps> = (props) => {
     const { themeName } = useAppTheme();
 
-    const fillColor = fillColors[themeName];
+    const fillColor = props.fill ? props.fill : fillColors[themeName];
 
     return (
         <svg
