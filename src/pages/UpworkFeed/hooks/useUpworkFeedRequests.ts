@@ -3,6 +3,8 @@ import { useGetUpworkFeedsMutation } from '../../../api/upworkFeedsApi';
 import { UpworkFeedSearchBy } from '../../../interfaces-submodule/enums/upwork-feed/upwork-feed-search-by.enum';
 import { ISearchParameterDTO } from '../../../interfaces-submodule/interfaces/dto/common/isearch-parameter.interface';
 import { IOptionInterface } from '../../../interfaces-submodule/interfaces/dto/common/ioption.interface';
+import { UpworkFeedSortBy } from '../../../interfaces-submodule/enums/upwork-feed/upwork-feed-sort-by.enum';
+import { SortDirection } from '../../../interfaces-submodule/enums/common/sort-direction.enum';
 
 interface IUpworkFeedRefetchSearchParams {
     title: string;
@@ -12,7 +14,11 @@ interface IUpworkFeedRefetchSearchParams {
     selectedReactionsOptions: IOptionInterface[];
 }
 
-const useUpworkFeedRequests = (refetchSearchParams: IUpworkFeedRefetchSearchParams) => {
+const useUpworkFeedRequests = (
+    refetchSearchParams: IUpworkFeedRefetchSearchParams,
+    sortBy: UpworkFeedSortBy | null,
+    sortDirection: SortDirection | null,
+) => {
     const [getUpworkFeeds, { data }] = useGetUpworkFeedsMutation();
 
     useEffect(() => {
@@ -53,6 +59,8 @@ const useUpworkFeedRequests = (refetchSearchParams: IUpworkFeedRefetchSearchPara
 
         getUpworkFeeds({
             searchParameters,
+            ...(sortBy && { sortBy }),
+            ...(sortDirection && { sortDirection }),
             pageSize: 10,
             pageNumber: 1,
         });
