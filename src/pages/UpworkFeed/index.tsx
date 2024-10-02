@@ -1,20 +1,25 @@
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import { useGetUpworkFeedsMutation } from '../../api/upworkFeedsApi';
 import CustomTable from './components/CustomTable';
 import { Button } from '@mui/material';
 import { ColumnDef } from '@tanstack/react-table';
 import { IUpworkFeedItemDTO } from '../../interfaces-submodule/interfaces/dto/upwork-feed/iupwork-feed-item.dto';
 import createUpworkFeedTableColumns from './utils/createUpworkFeedTableColumns';
-import { IOptionInterface } from '../../interfaces-submodule/interfaces/dto/common/ioption.interface';
-import { UpworkFeedSearchBy } from '../../interfaces-submodule/enums/upwork-feed/upwork-feed-search-by.enum';
+import useUpworkFeedFilters from './hooks/useUpworkFeedFilters';
 
 interface UpworkFeedProps {}
 
 const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
-    const [title, setTitle] = useState('');
-    const [published, setPublished] = useState<Date | null>(new Date());
-    const [selectedKeywordsOptions, setSelectedKeywordsOptions] = useState<IOptionInterface[]>([]);
-    const [selectedScoresOptions, setSelectedScoresOptions] = useState<IOptionInterface[]>([]);
+    const {
+        title,
+        setTitle,
+        published,
+        setPublished,
+        selectedKeywordsOptions,
+        setSelectedKeywordsOptions,
+        setSelectedScoresOptions,
+        selectedScoresOptions,
+    } = useUpworkFeedFilters();
 
     const [getUpworkFeeds, { data }] = useGetUpworkFeedsMutation();
 
@@ -23,8 +28,6 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
     }, []);
 
     const tableItems = data?.data.items.items ?? [];
-
-    console.log(data);
 
     const scoresOptions = data?.data.scoreOptions ?? [];
     const keywordsOptions = useMemo(() => data?.data.keywordsOptions ?? [], [data]);
