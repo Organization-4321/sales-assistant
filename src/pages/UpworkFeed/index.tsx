@@ -45,19 +45,28 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
             <CustomTable
                 data={tableItems}
                 columns={columns}
-                title={title}
-                setTitle={setTitle}
-                keywordsOptions={keywordsOptions}
-                scoresOptions={scoresOptions}
-                selectedKeywordsOptions={selectedKeywordsOptions}
-                setSelectedKeywordsOptions={setSelectedKeywordsOptions}
-                selectedScoresOptions={selectedScoresOptions}
-                setSelectedScoresOptions={setSelectedScoresOptions}
-                published={published}
-                setPublished={setPublished}
-                reactionsOptions={reactionsOptions}
-                selectedReactionsOptions={selectedReactionsOptions}
-                setSelectedReactionsOptions={setSelectedReactionsOptions}
+                titleProps={{
+                    title,
+                    setTitle,
+                }}
+                filterProps={{
+                    keywordsOptions,
+                    scoresOptions,
+                    selectedKeywordsOptions,
+                    setSelectedKeywordsOptions,
+                    selectedScoresOptions,
+                    setSelectedScoresOptions,
+                    published,
+                    setPublished,
+                    reactionsOptions,
+                    selectedReactionsOptions,
+                    setSelectedReactionsOptions,
+                }}
+                sortProps={{
+                    sortBy,
+                    handleSetSortBy,
+                    sortDirection,
+                }}
             />
         </div>
     );
