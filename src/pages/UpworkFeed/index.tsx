@@ -4,6 +4,7 @@ import { Button } from '@mui/material';
 import useUpworkFeedFilters from './hooks/useUpworkFeedFilters';
 import useUpworkFeedTable from './hooks/useUpworkFeedTable';
 import useUpworkFeedRequests from './hooks/useUpworkFeedRequests';
+import useUpworkFeedSort from './hooks/useUpworkFeedSort';
 
 interface UpworkFeedProps {}
 
@@ -21,13 +22,19 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         setSelectedReactionsOptions,
     } = useUpworkFeedFilters();
 
-    const { data, refetchUpworkFeeds } = useUpworkFeedRequests({
-        title,
-        published,
-        selectedKeywordsOptions,
-        selectedScoresOptions,
-        selectedReactionsOptions,
-    });
+    const { sortBy, sortDirection, handleSetSortBy } = useUpworkFeedSort();
+
+    const { data, refetchUpworkFeeds } = useUpworkFeedRequests(
+        {
+            title,
+            published,
+            selectedKeywordsOptions,
+            selectedScoresOptions,
+            selectedReactionsOptions,
+        },
+        sortBy,
+        sortDirection,
+    );
 
     const { tableItems, keywordsOptions, scoresOptions, reactionsOptions, columns } =
         useUpworkFeedTable(data);
