@@ -27,7 +27,7 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
     console.log(data);
 
     const scoresOptions = data?.data.scoreOptions ?? [];
-    const keywordsOptions = data?.data.keywordsOptions ?? [];
+    const keywordsOptions = useMemo(() => data?.data.keywordsOptions ?? [], [data]);
 
     const columns: ColumnDef<IUpworkFeedItemDTO>[] = useMemo(
         () => createUpworkFeedTableColumns(),
