@@ -23,8 +23,16 @@ const useUpworkFeedRequests = (
     const [getUpworkFeeds, { data }] = useGetUpworkFeedsMutation();
 
     useEffect(() => {
-        getUpworkFeeds({ pageSize: 10, pageNumber: 1 });
-    }, []);
+        const searchParameters = createUpworkFeedsSearchParams(refetchSearchParams);
+
+        getUpworkFeeds({
+            searchParameters,
+            ...(sortBy && { sortBy }),
+            ...(sortDirection && { sortDirection }),
+            pageSize,
+            pageNumber,
+        });
+    }, [pageNumber, pageSize]);
 
     const totalItemsCount = data?.data.items.totalCount || -1;
     const totalPagesCount = data?.data.items.totalPages || -1;
