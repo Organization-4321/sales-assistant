@@ -6,6 +6,7 @@ import useUpworkFeedTable from './hooks/useUpworkFeedTable';
 import useUpworkFeedRequests from './hooks/useUpworkFeedRequests';
 import useUpworkFeedSort from './hooks/useUpworkFeedSort';
 import useUpworkFeedPagination from './hooks/useUpworkFeedPagination';
+import UpworkFeedPagination from './components/UpworkFeedPagination';
 
 interface UpworkFeedProps {}
 
@@ -73,6 +74,14 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
                     handleSetSortBy,
                     sortDirection,
                 }}
+            />
+            <UpworkFeedPagination
+                page={pageNumber}
+                handlePageChange={handlePageNumberChange}
+                perPage={pageSize}
+                totalItemsCount={totalItemsCount}
+                totalPagesCount={totalPagesCount}
+                handlePageSizeChange={handlePageSizeChange}
             />
         </div>
     );
