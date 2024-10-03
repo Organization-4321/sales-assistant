@@ -5,6 +5,7 @@ import useUpworkFeedFilters from './hooks/useUpworkFeedFilters';
 import useUpworkFeedTable from './hooks/useUpworkFeedTable';
 import useUpworkFeedRequests from './hooks/useUpworkFeedRequests';
 import useUpworkFeedSort from './hooks/useUpworkFeedSort';
+import useUpworkFeedPagination from './hooks/useUpworkFeedPagination';
 
 interface UpworkFeedProps {}
 
@@ -24,7 +25,10 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
 
     const { sortBy, sortDirection, handleSetSortBy } = useUpworkFeedSort();
 
-    const { data, refetchUpworkFeeds } = useUpworkFeedRequests(
+    const { pageNumber, pageSize, handlePageNumberChange, handlePageSizeChange } =
+        useUpworkFeedPagination();
+
+    const { data, refetchUpworkFeeds, totalItemsCount, totalPagesCount } = useUpworkFeedRequests(
         {
             title,
             published,
@@ -34,6 +38,8 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         },
         sortBy,
         sortDirection,
+        pageNumber,
+        pageSize,
     );
 
     const { tableItems, keywordsOptions, scoresOptions, reactionsOptions, columns } =
