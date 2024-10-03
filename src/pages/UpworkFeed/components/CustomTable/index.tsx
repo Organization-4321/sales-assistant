@@ -6,7 +6,9 @@ import UpworkKeywordsHeader from '../UpworkKeywordsHeader';
 import UpworkScoreHeader from '../UpworkScoreHeader';
 import MemoizedTableBody from './MemoizedTableBody';
 import UpworkReactionHeader from '../UpworkReactionHeader';
+import { UpworkFeedSortBy } from '../../../../interfaces-submodule/enums/upwork-feed/upwork-feed-sort-by.enum';
 import { ICustomTableProps } from '../../types/custom-table-props.types';
+import UpworkFeedSortableHeader from '../UpworkFeedSortableHeader';
 
 const CustomTable = <T extends object>({
     data,
@@ -43,18 +45,30 @@ const CustomTable = <T extends object>({
                                 {
                                     {
                                         title: (
-                                            <UpworkTitleHeader
+                                            <UpworkFeedSortableHeader
                                                 title="Title"
-                                                inputValue={title}
-                                                setInputValue={setTitle}
-                                            />
+                                                isSortedBy={sortBy === UpworkFeedSortBy.Title}
+                                                sortBy={UpworkFeedSortBy.Title}
+                                                handleSetSortBy={handleSetSortBy}
+                                                sortDirection={sortDirection}>
+                                                <UpworkTitleHeader
+                                                    inputValue={title}
+                                                    setInputValue={setTitle}
+                                                />
+                                            </UpworkFeedSortableHeader>
                                         ),
                                         published: (
-                                            <UpworkPublishedHeader
+                                            <UpworkFeedSortableHeader
                                                 title="Published"
-                                                date={published}
-                                                setDate={setPublished}
-                                            />
+                                                isSortedBy={sortBy === UpworkFeedSortBy.Published}
+                                                sortBy={UpworkFeedSortBy.Published}
+                                                handleSetSortBy={handleSetSortBy}
+                                                sortDirection={sortDirection}>
+                                                <UpworkPublishedHeader
+                                                    date={published}
+                                                    setDate={setPublished}
+                                                />
+                                            </UpworkFeedSortableHeader>
                                         ),
                                         keywords: (
                                             <UpworkKeywordsHeader
@@ -65,20 +79,32 @@ const CustomTable = <T extends object>({
                                             />
                                         ),
                                         score: (
-                                            <UpworkScoreHeader
+                                            <UpworkFeedSortableHeader
                                                 title="Score"
-                                                scoresOptions={scoresOptions}
-                                                selectedOptions={selectedScoresOptions}
-                                                setSelectedOptions={setSelectedScoresOptions}
-                                            />
+                                                isSortedBy={sortBy === UpworkFeedSortBy.Score}
+                                                sortBy={UpworkFeedSortBy.Score}
+                                                handleSetSortBy={handleSetSortBy}
+                                                sortDirection={sortDirection}>
+                                                <UpworkScoreHeader
+                                                    scoresOptions={scoresOptions}
+                                                    selectedOptions={selectedScoresOptions}
+                                                    setSelectedOptions={setSelectedScoresOptions}
+                                                />
+                                            </UpworkFeedSortableHeader>
                                         ),
                                         review: (
-                                            <UpworkReactionHeader
+                                            <UpworkFeedSortableHeader
                                                 title="Reaction"
-                                                options={reactionsOptions}
-                                                selectedOptions={selectedReactionsOptions}
-                                                setSelectedOptions={setSelectedReactionsOptions}
-                                            />
+                                                isSortedBy={sortBy === UpworkFeedSortBy.Review}
+                                                sortBy={UpworkFeedSortBy.Review}
+                                                handleSetSortBy={handleSetSortBy}
+                                                sortDirection={sortDirection}>
+                                                <UpworkReactionHeader
+                                                    options={reactionsOptions}
+                                                    selectedOptions={selectedReactionsOptions}
+                                                    setSelectedOptions={setSelectedReactionsOptions}
+                                                />
+                                            </UpworkFeedSortableHeader>
                                         ),
                                         matchedCases: (
                                             <Typography
