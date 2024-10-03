@@ -17,12 +17,17 @@ const useUpworkFeedRequests = (
     refetchSearchParams: IUpworkFeedRefetchSearchParams,
     sortBy: UpworkFeedSortBy | null,
     sortDirection: SortDirection | null,
+    pageNumber: number,
+    pageSize: number,
 ) => {
     const [getUpworkFeeds, { data }] = useGetUpworkFeedsMutation();
 
     useEffect(() => {
         getUpworkFeeds({ pageSize: 10, pageNumber: 1 });
     }, []);
+
+    const totalItemsCount = data?.data.items.totalCount || -1;
+    const totalPagesCount = data?.data.items.totalPages || -1;
 
     const refetchUpworkFeeds = () => {
         const searchParameters = createUpworkFeedsSearchParams(refetchSearchParams);
@@ -31,8 +36,8 @@ const useUpworkFeedRequests = (
             searchParameters,
             ...(sortBy && { sortBy }),
             ...(sortDirection && { sortDirection }),
-            pageSize: 10,
-            pageNumber: 1,
+            pageSize,
+            pageNumber,
         });
     };
 
