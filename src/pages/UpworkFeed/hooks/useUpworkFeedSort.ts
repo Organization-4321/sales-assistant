@@ -6,8 +6,11 @@ const useUpworkFeedSort = () => {
     const [sortBy, setSortBy] = useState<UpworkFeedSortBy | null>(null);
     const [sortDirection, setSortDirection] = useState<SortDirection | null>(null);
 
-    const handleSetSortBy = (nextSortBy: UpworkFeedSortBy) => {
-        if (nextSortBy === sortBy) {
+    const handleSetSortBy = (nextSortBy: UpworkFeedSortBy | null) => {
+        if (sortBy && nextSortBy === sortBy && sortDirection === SortDirection.DESC) {
+            setSortBy(null);
+            setSortDirection(SortDirection.ASC);
+        } else if (nextSortBy === sortBy && sortBy) {
             setSortDirection(
                 sortDirection === SortDirection.ASC ? SortDirection.DESC : SortDirection.ASC,
             );
