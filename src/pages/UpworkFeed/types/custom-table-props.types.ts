@@ -31,7 +31,7 @@ interface FilterProps {
 }
 
 interface SortProps {
-    sortBy?: UpworkFeedSortBy | null;
+    sortBy: UpworkFeedSortBy | null;
     handleSetSortBy: (nextSortBy: UpworkFeedSortBy) => void;
-    sortDirection?: SortDirection | null;
+    sortDirection: SortDirection | null;
 }
