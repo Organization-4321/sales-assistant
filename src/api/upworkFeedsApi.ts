@@ -5,13 +5,18 @@ import { IApiResponseGenericDTO } from '../interfaces-submodule/interfaces/dto/c
 import { IUpworkResponseListFeedsDto } from '../interfaces-submodule/interfaces/dto/upwork-feed/iupwork-response-list-feeds.dto';
 import { IGetAllUpworkFeedRequest } from '../interfaces-submodule/interfaces/dto/upwork-feed/iget-all-upwork-feed-request.interface';
 
+export interface IGetAllUpworkFeedRequestWithPagination extends IGetAllUpworkFeedRequest {
+    pageNumber: number;
+    pageSize: number;
+}
+
 const upworkFeedsApi = createApi({
     reducerPath: UpworkFeedsRoutesEnum.BasePrefix,
     baseQuery: baseQueryWithReauth(UpworkFeedsRoutesEnum.BasePrefix),
     endpoints: (builder) => ({
         getUpworkFeeds: builder.mutation<
             IApiResponseGenericDTO<IUpworkResponseListFeedsDto>,
-            IGetAllUpworkFeedRequest
+            IGetAllUpworkFeedRequestWithPagination
         >({
             query: (requestBody) => ({
                 url: UpworkFeedsRoutesEnum.GetFeeds,
