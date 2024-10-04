@@ -11,6 +11,7 @@ const useUpworkFeedPagination = () => {
     const handlePageSizeChange = (
         event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => {
+        setPageNumber(1);
         setPageSize(Number(event.target.value));
     };
 

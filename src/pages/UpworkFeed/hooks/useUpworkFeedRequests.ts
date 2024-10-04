@@ -27,6 +27,8 @@ const useUpworkFeedRequests = (
     const savedRefetchParams = useRef<ISearchParameterDTO<UpworkFeedSearchBy>[] | null>(null);
     const [getUpworkFeeds, { data }] = useGetUpworkFeedsMutation();
 
+    const totalKeywordsOptionsCount = data?.data.keywordsOptions.length || 0;
+
     useEffect(() => {
         getUpworkFeeds({
             searchParameters: savedRefetchParams.current || [],
@@ -36,7 +38,6 @@ const useUpworkFeedRequests = (
             pageNumber: 1,
         });
 
-        setPageNumber(1);
         shouldRefetch.current = false;
     }, [pageSize]);
 
@@ -56,7 +57,10 @@ const useUpworkFeedRequests = (
     const totalPagesCount = data?.data.items.totalPages || -1;
 
     const refetchUpworkFeeds = () => {
-        const searchParameters = createUpworkFeedsSearchParams(refetchSearchParams);
+        const searchParameters = createUpworkFeedsSearchParams(
+            refetchSearchParams,
+            totalKeywordsOptionsCount,
+        );
         savedRefetchParams.current = searchParameters;
 
         getUpworkFeeds({
@@ -67,8 +71,10 @@ const useUpworkFeedRequests = (
             pageNumber: 1,
         });
 
-        setPageNumber(1);
-        shouldRefetch.current = false;
+        if (pageNumber > 1) {
+            setPageNumber(1);
+            shouldRefetch.current = false;
+        }
     };
 
     return { data, refetchUpworkFeeds, totalItemsCount, totalPagesCount };

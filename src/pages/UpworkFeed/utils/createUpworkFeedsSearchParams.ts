@@ -2,7 +2,10 @@ import { UpworkFeedSearchBy } from '../../../interfaces-submodule/enums/upwork-f
 import { ISearchParameterDTO } from '../../../interfaces-submodule/interfaces/dto/common/isearch-parameter.interface';
 import { IUpworkFeedRefetchSearchParams } from '../hooks/useUpworkFeedRequests';
 
-const createUpworkFeedsSearchParams = (refetchSearchParams: IUpworkFeedRefetchSearchParams) => {
+const createUpworkFeedsSearchParams = (
+    refetchSearchParams: IUpworkFeedRefetchSearchParams,
+    totalKeywordsOptionsCount: number,
+) => {
     const {
         title,
         published,
@@ -17,10 +20,11 @@ const createUpworkFeedsSearchParams = (refetchSearchParams: IUpworkFeedRefetchSe
             searchBy: UpworkFeedSearchBy.Published,
             searchQuery: `${published.toISOString()} - ${new Date().toISOString()}`,
         },
-        selectedKeywordsOptions.length > 0 && {
-            searchBy: UpworkFeedSearchBy.Keywords,
-            searchQuery: selectedKeywordsOptions.map((option) => option.value),
-        },
+        selectedKeywordsOptions.length > 0 &&
+            totalKeywordsOptionsCount !== selectedKeywordsOptions.length && {
+                searchBy: UpworkFeedSearchBy.Keywords,
+                searchQuery: selectedKeywordsOptions.map((option) => option.value),
+            },
         selectedScoresOptions.length > 0 && {
             searchBy: UpworkFeedSearchBy.Score,
             searchQuery: selectedScoresOptions.map((option) => option.value),
