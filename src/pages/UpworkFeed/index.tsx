@@ -26,7 +26,7 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
 
     const { sortBy, sortDirection, handleSetSortBy } = useUpworkFeedSort();
 
-    const { pageNumber, pageSize, handlePageNumberChange, handlePageSizeChange } =
+    const { pageNumber, pageSize, handlePageNumberChange, handlePageSizeChange, setPageNumber } =
         useUpworkFeedPagination();
 
     const { data, refetchUpworkFeeds, totalItemsCount, totalPagesCount } = useUpworkFeedRequests(
@@ -41,6 +41,7 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         sortDirection,
         pageNumber,
         pageSize,
+        setPageNumber,
     );
 
     const { tableItems, keywordsOptions, scoresOptions, reactionsOptions, columns } =

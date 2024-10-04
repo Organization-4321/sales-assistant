@@ -14,7 +14,7 @@ const useUpworkFeedPagination = () => {
         setPageSize(Number(event.target.value));
     };
 
-    return { pageNumber, pageSize, handlePageNumberChange, handlePageSizeChange };
+    return { pageNumber, pageSize, handlePageNumberChange, handlePageSizeChange, setPageNumber };
 };
 
 export default useUpworkFeedPagination;
