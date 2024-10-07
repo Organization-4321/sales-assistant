@@ -1,4 +1,4 @@
-import { Box, Pagination, TablePagination } from '@mui/material';
+import { Box, Pagination, TablePagination, Typography } from '@mui/material';
 import { FC } from 'react';
 
 interface UpworkFeedPaginationProps {
@@ -30,6 +30,27 @@ const UpworkFeedPagination: FC<UpworkFeedPaginationProps> = ({
                 ActionsComponent={() => null}
                 onPageChange={() => {}}
                 onRowsPerPageChange={handlePageSizeChange}
+                labelDisplayedRows={({ from, to, count }) => (
+                    <Box display="flex" alignItems="center" gap={1}>
+                        <Typography color="text.secondary" component="span" sx={{ opacity: 0.65 }}>
+                            Items shown:
+                        </Typography>
+                        <Typography color="text.secondary" component="span" fontWeight="bold">
+                            {from}-{to}
+                        </Typography>
+                        <Typography>
+                            out of{' '}
+                            <Typography color="text.secondary" component="span" fontWeight="bold">
+                                {count !== -1 ? count : to}
+                            </Typography>
+                        </Typography>
+                    </Box>
+                )}
+                labelRowsPerPage={
+                    <Typography color="text.secondary" component="span" sx={{ opacity: 0.65 }}>
+                        Items per page:
+                    </Typography>
+                }
             />
             <Pagination
                 page={page}
