@@ -51,6 +51,26 @@ const UpworkFeedPagination: FC<UpworkFeedPaginationProps> = ({
                         Items per page:
                     </Typography>
                 }
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    '& .MuiTablePagination-toolbar': {
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        width: '100%',
+                    },
+                    '& .MuiTablePagination-selectLabel': {
+                        order: 1,
+                    },
+                    '& .MuiTablePagination-input': {
+                        order: 2,
+                    },
+                    '& .MuiTablePagination-displayedRows': {
+                        order: 0,
+                        marginRight: 3,
+                    },
+                }}
             />
             <Pagination
                 page={page}
