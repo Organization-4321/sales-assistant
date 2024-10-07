@@ -71,14 +71,17 @@ const CustomSelect: FC<ICustomSelect> = ({
                 control: (base) => ({
                     ...base,
                     minHeight: '44px',
-                    background: 'inherit',
+                    background: mode === 'dark' ? '#131314' : '#fff',
                     color: mode === 'dark' ? '#fff' : '#131314',
+                    borderColor: mode === 'dark' ? '#70737a' : '#b0b3b8',
+                    borderRadius: 8,
                 }),
                 option: () => ({ width: 'max-content' }),
                 menu: (base) => ({
                     ...base,
-                    background: mode === 'dark' ? '#2b2b2b' : '#fff',
+                    background: mode === 'dark' ? '#131314' : '#fff',
                     minWidth: '240px',
+                    borderRadius: 12,
                 }),
             }}
             filterOption={createFilter({ ignoreAccents: false })}
