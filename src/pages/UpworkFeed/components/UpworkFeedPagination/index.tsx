@@ -31,14 +31,14 @@ const UpworkFeedPagination: FC<UpworkFeedPaginationProps> = ({
                 onPageChange={() => {}}
                 onRowsPerPageChange={handlePageSizeChange}
                 labelDisplayedRows={({ from, to, count }) => (
-                    <Box display="flex" alignItems="center" gap={1}>
+                    <Box display="flex" alignItems="center" gap={1} component="span">
                         <Typography color="text.secondary" component="span" sx={{ opacity: 0.65 }}>
                             Items shown:
                         </Typography>
                         <Typography color="text.secondary" component="span" fontWeight="bold">
                             {from}-{to}
                         </Typography>
-                        <Typography>
+                        <Typography component="span">
                             out of{' '}
                             <Typography color="text.secondary" component="span" fontWeight="bold">
                                 {count !== -1 ? count : to}
