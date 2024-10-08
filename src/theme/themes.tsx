@@ -126,9 +126,14 @@ const createAppTheme = (mode: ITheme) => {
             MuiTableCell: {
                 styleOverrides: {
                     root: {
-                        padding: theme.spacing(2, 1.5),
+                        padding: theme.spacing(1),
                         color: isDarkMode ? '#c9ced6' : '#414752',
                         verticalAlign: 'top',
+                    },
+                    body: {
+                        padding: theme.spacing(2, 1.5),
+                        borderTop: `1px solid ${isDarkMode ? '#414752' : '#d5d7db'}`,
+                        borderBottom: `1px solid ${isDarkMode ? '#414752' : '#d5d7db'}`,
                     },
                 },
             },
