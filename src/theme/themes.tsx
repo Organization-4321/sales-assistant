@@ -174,6 +174,27 @@ const createAppTheme = (mode: ITheme) => {
                     },
                 },
             },
+            MuiPaginationItem: {
+                styleOverrides: {
+                    root: {
+                        border: 'none',
+                        fontWeight: 600,
+                        fontSize: '16px',
+                        color: isDarkMode ? '#fff' : '#131314',
+                        padding: '12px 10px',
+                        minWidth: '36px',
+                        minHeight: '48px',
+                    },
+
+                    outlined: {
+                        '&.Mui-selected': {
+                            border: `2px solid ${isDarkMode ? '#3760ad' : '#abbde0'}`,
+                            borderRadius: '4px',
+                            background: isDarkMode ? '#131314' : '#fff',
+                        },
+                    },
+                },
+            },
         },
     });
 };
