@@ -6,7 +6,7 @@ const ArrowIconLeft = createSvgIcon(
             fillRule="evenodd"
             clipRule="evenodd"
             d="M6.50424 8L11.0042 12.5L9.50424 14L4 8.5V7.5L9.50424 2L11.0042 3.5L6.50424 8Z"
-            fill="#333333"
+            fill="currentColor"
         />
     </svg>,
     'ArrowIconLeft',
