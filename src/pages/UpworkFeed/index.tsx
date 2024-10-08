@@ -7,6 +7,7 @@ import useUpworkFeedRequests from './hooks/useUpworkFeedRequests';
 import useUpworkFeedSort from './hooks/useUpworkFeedSort';
 import useUpworkFeedPagination from './hooks/useUpworkFeedPagination';
 import UpworkFeedPagination from './components/UpworkFeedPagination';
+import RefreshIcon from '../../components/icons/RefreshIcon';
 
 interface UpworkFeedProps {}
 
@@ -49,7 +50,9 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
 
     return (
         <div>
-            <Button onClick={refetchUpworkFeeds}>Refetch RSS</Button>
+            <Button onClick={refetchUpworkFeeds} startIcon={<RefreshIcon />}>
+                Refetch RSS
+            </Button>
             <CustomTable
                 data={tableItems}
                 columns={columns}
