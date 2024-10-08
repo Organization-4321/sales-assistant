@@ -165,6 +165,12 @@ const createAppTheme = (mode: ITheme) => {
                         paddingBottom: theme.spacing(1.5),
                         paddingRight: theme.spacing(1),
                         paddingLeft: theme.spacing(0.25),
+                        '& .MuiSvgIcon-root': {
+                            color: '#B0B3B8',
+                        },
+                        '&.Mui-checked .MuiSvgIcon-root': {
+                            color: '#0f62fe',
+                        },
                     },
                 },
             },
