@@ -1,5 +1,6 @@
-import { Box, Pagination, TablePagination, Typography } from '@mui/material';
+import { Box, Pagination } from '@mui/material';
 import { FC } from 'react';
+import StyledTablePagination from './StyledTablePagination';
 
 interface UpworkFeedPaginationProps {
     page: number;
@@ -22,55 +23,11 @@ const UpworkFeedPagination: FC<UpworkFeedPaginationProps> = ({
 }) => {
     return (
         <Box display="flex" alignItems="center" justifyContent="space-between">
-            <TablePagination
-                component="div"
-                count={totalItemsCount}
-                page={page - 1}
-                rowsPerPage={perPage}
-                ActionsComponent={() => null}
-                onPageChange={() => {}}
-                onRowsPerPageChange={handlePageSizeChange}
-                labelDisplayedRows={({ from, to, count }) => (
-                    <Box display="flex" alignItems="center" gap={1} component="span">
-                        <Typography color="text.secondary" component="span" sx={{ opacity: 0.65 }}>
-                            Items shown:
-                        </Typography>
-                        <Typography color="text.secondary" component="span" fontWeight="bold">
-                            {from}-{to}
-                        </Typography>
-                        <Typography component="span">
-                            out of{' '}
-                            <Typography color="text.secondary" component="span" fontWeight="bold">
-                                {count !== -1 ? count : to}
-                            </Typography>
-                        </Typography>
-                    </Box>
-                )}
-                labelRowsPerPage={
-                    <Typography color="text.secondary" component="span" sx={{ opacity: 0.65 }}>
-                        Items per page:
-                    </Typography>
-                }
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    '& .MuiTablePagination-toolbar': {
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        width: '100%',
-                    },
-                    '& .MuiTablePagination-selectLabel': {
-                        order: 1,
-                    },
-                    '& .MuiTablePagination-input': {
-                        order: 2,
-                    },
-                    '& .MuiTablePagination-displayedRows': {
-                        order: 0,
-                        marginRight: 3,
-                    },
-                }}
+            <StyledTablePagination
+                page={page}
+                perPage={perPage}
+                totalItemsCount={totalItemsCount}
+                handlePageSizeChange={handlePageSizeChange}
             />
             <Pagination
                 page={page}
