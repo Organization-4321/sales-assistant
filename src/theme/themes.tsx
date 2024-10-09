@@ -143,6 +143,7 @@ const createAppTheme = (mode: ITheme) => {
                         color: isDarkMode ? '#fff' : '#0e0e0f',
                         backgroundColor: isDarkMode ? '#252733' : '#ebecf0',
                         fontSize: '0.875rem',
+                        fontWeight: 500,
                     },
                 },
             },
