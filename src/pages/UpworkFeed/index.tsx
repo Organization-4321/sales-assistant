@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import CustomTable from './components/CustomTable';
-import { Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import useUpworkFeedFilters from './hooks/useUpworkFeedFilters';
 import useUpworkFeedTable from './hooks/useUpworkFeedTable';
 import useUpworkFeedRequests from './hooks/useUpworkFeedRequests';
@@ -49,7 +49,7 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         useUpworkFeedTable(data);
 
     return (
-        <div>
+        <Box sx={{ px: 4 }}>
             <Button onClick={refetchUpworkFeeds} startIcon={<RefreshIcon />}>
                 Refetch RSS
             </Button>
@@ -87,7 +87,7 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
                 totalPagesCount={totalPagesCount}
                 handlePageSizeChange={handlePageSizeChange}
             />
-        </div>
+        </Box>
     );
 };
 
