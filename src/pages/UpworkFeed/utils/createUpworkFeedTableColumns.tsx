@@ -1,9 +1,10 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { IUpworkFeedItemDTO } from '../../../interfaces-submodule/interfaces/dto/upwork-feed/iupwork-feed-item.dto';
-import { Chip, Link } from '@mui/material';
+import { Link } from '@mui/material';
 import moment, { MomentInput } from 'moment';
 import UpworkKeywordsCell from '../components/UpworkKeywordsCell';
 import UpworkReactionCell from '../components/UpworkReactionCell';
+import UpworkScoreCell from '../components/UpworkScoreCell';
 
 const createUpworkFeedTableColumns = (): ColumnDef<IUpworkFeedItemDTO>[] => [
     {
@@ -24,7 +25,7 @@ const createUpworkFeedTableColumns = (): ColumnDef<IUpworkFeedItemDTO>[] => [
     },
     {
         accessorKey: 'score',
-        cell: ({ row }) => row.original.score && <Chip label={row.original.score} />,
+        cell: ({ row }) => row.original.score && <UpworkScoreCell score={row.original.score} />,
     },
     {
         accessorKey: 'review',
