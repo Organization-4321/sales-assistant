@@ -49,7 +49,7 @@ const UpworkScoreCell: FC<UpworkScoreCellProps> = ({ score }) => {
 
     const scoreColor = themeName === ITheme.DARK ? scoreRange?.darkColor : scoreRange?.lightColor;
 
-    return <Chip sx={{ backgroundColor: scoreColor }} label={score} />;
+    return <Chip sx={{ backgroundColor: scoreColor, fontWeight: 500 }} label={score} />;
 };
 
 export default UpworkScoreCell;
