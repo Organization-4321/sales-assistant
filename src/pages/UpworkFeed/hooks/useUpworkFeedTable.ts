@@ -9,9 +9,9 @@ import { IOptionInterface } from '../../../interfaces-submodule/interfaces/dto/c
 const useUpworkFeedTable = (
     data: IApiResponseGenericDTO<IUpworkResponseListFeedsDto> | undefined,
 ) => {
-    const tableItems = data?.data.items.items ?? [];
+    const tableItems = useMemo(() => data?.data.items.items ?? [], [data]);
 
-    const scoresOptions = data?.data.scoreOptions ?? [];
+    const scoresOptions = useMemo(() => data?.data.scoreOptions ?? [], [data]);
     const keywordsOptions = useMemo(() => data?.data.keywordsOptions ?? [], [data]);
 
     const reactionsOptions: IOptionInterface[] = [
