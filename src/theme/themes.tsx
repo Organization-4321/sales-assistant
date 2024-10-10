@@ -23,10 +23,12 @@ const createAppTheme = (mode: ITheme) => {
                 main: isDarkMode ? '#131314' : '#0f62fe',
             },
             background: {
-                default: isDarkMode ? '#131314' : '#fff',
+                default: isDarkMode ? '#181a1f' : '#f6f7f8',
+                paper: isDarkMode ? '#131314' : '#fff',
             },
             text: {
                 primary: isDarkMode ? '#ebecf0' : '#252733',
+                secondary: isDarkMode ? '#fff' : '#131314',
             },
         },
         components: {
