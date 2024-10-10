@@ -23,17 +23,19 @@ const createAppTheme = (mode: ITheme) => {
                 main: isDarkMode ? '#131314' : '#0f62fe',
             },
             background: {
-                default: isDarkMode ? '#131314' : '#fff',
+                default: isDarkMode ? '#181a1f' : '#f6f7f8',
+                paper: isDarkMode ? '#131314' : '#fff',
             },
             text: {
                 primary: isDarkMode ? '#ebecf0' : '#252733',
+                secondary: isDarkMode ? '#fff' : '#131314',
             },
         },
         components: {
             MuiButton: {
                 styleOverrides: {
                     root: {
-                        padding: theme.spacing(1.5),
+                        padding: theme.spacing(1, 2),
                         borderRadius: theme.spacing(1),
                         border: `2px solid ${isDarkMode ? '#3760ad' : '#abbde0'}`,
                         color: isDarkMode ? '#ebecf0' : '#252733',
@@ -120,6 +122,21 @@ const createAppTheme = (mode: ITheme) => {
                 styleOverrides: {
                     root: {
                         fontWeight: 600,
+                    },
+                },
+            },
+            MuiTypography: {
+                styleOverrides: {
+                    subtitle2: {
+                        color: isDarkMode ? '#c9ced6' : '#4d4d4d',
+                        fontWeight: 600,
+                    },
+                },
+            },
+            MuiInputBase: {
+                styleOverrides: {
+                    root: {
+                        background: isDarkMode ? '#131314' : '#fff',
                     },
                 },
             },
