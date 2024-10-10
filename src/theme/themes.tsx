@@ -35,7 +35,7 @@ const createAppTheme = (mode: ITheme) => {
             MuiButton: {
                 styleOverrides: {
                     root: {
-                        padding: theme.spacing(1.5),
+                        padding: theme.spacing(1, 2),
                         borderRadius: theme.spacing(1),
                         border: `2px solid ${isDarkMode ? '#3760ad' : '#abbde0'}`,
                         color: isDarkMode ? '#ebecf0' : '#252733',
