@@ -125,6 +125,14 @@ const createAppTheme = (mode: ITheme) => {
                     },
                 },
             },
+            MuiTypography: {
+                styleOverrides: {
+                    subtitle2: {
+                        color: isDarkMode ? '#c9ced6' : '#4d4d4d',
+                        fontWeight: 600,
+                    },
+                },
+            },
         },
     });
 };
