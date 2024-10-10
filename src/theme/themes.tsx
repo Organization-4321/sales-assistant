@@ -133,6 +133,13 @@ const createAppTheme = (mode: ITheme) => {
                     },
                 },
             },
+            MuiInputBase: {
+                styleOverrides: {
+                    root: {
+                        background: isDarkMode ? '#131314' : '#fff',
+                    },
+                },
+            },
         },
     });
 };
