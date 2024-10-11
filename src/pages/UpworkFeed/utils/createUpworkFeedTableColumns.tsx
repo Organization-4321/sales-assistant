@@ -1,15 +1,17 @@
 import { ColumnDef } from '@tanstack/react-table';
 import { IUpworkFeedItemDTO } from '../../../interfaces-submodule/interfaces/dto/upwork-feed/iupwork-feed-item.dto';
-import { Link } from '@mui/material';
 import moment, { MomentInput } from 'moment';
 import UpworkKeywordsCell from '../components/UpworkKeywordsCell';
 import UpworkReactionCell from '../components/UpworkReactionCell';
 import UpworkScoreCell from '../components/UpworkScoreCell';
+import RouterLink from '../../../components/UI/RouterLink';
 
 const createUpworkFeedTableColumns = (): ColumnDef<IUpworkFeedItemDTO>[] => [
     {
         accessorKey: 'title',
-        cell: ({ row }) => <Link>{row.original.title}</Link>,
+        cell: ({ row }) => (
+            <RouterLink to={row.original.id || '/'}>{row.original.title}</RouterLink>
+        ),
     },
     {
         accessorKey: 'published',
