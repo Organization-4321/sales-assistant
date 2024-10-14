@@ -33,24 +33,33 @@ const createAppTheme = (mode: ITheme) => {
         },
         components: {
             MuiButton: {
+                defaultProps: {
+                    variant: 'outlined',
+                },
                 styleOverrides: {
                     root: {
                         padding: theme.spacing(1, 2),
                         borderRadius: theme.spacing(1),
+                        textTransform: 'initial',
+                        fontSize: theme.spacing(2),
+                        fontWeight: '500',
+                    },
+                    outlined: {
                         border: `2px solid ${isDarkMode ? '#3760ad' : '#abbde0'}`,
                         color: isDarkMode ? '#ebecf0' : '#252733',
                         backgroundColor: isDarkMode ? '#131314' : '#fff',
-                        textTransform: 'initial',
-                        fontSize: theme.spacing(2),
-                        fontWeight: 'bold',
                         '&:hover': {
-                            borderColor: isDarkMode ? '#3760ad' : '#abbde0',
+                            border: `2px solid ${isDarkMode ? '#3760ad' : '#abbde0'}`,
                             backgroundColor: isDarkMode ? '#181b29' : '#f0f5ff',
                         },
                         '&:focus': {
                             borderColor: isDarkMode ? '#3760ad' : '#abbde0',
                             backgroundColor: isDarkMode ? '#3760ad' : '#abbde0',
                         },
+                    },
+                    contained: {
+                        backgroundColor: isDarkMode ? '#5b94fe' : '#0f62fe',
+                        color: isDarkMode ? '#131314' : '#fff',
                     },
                 },
             },
