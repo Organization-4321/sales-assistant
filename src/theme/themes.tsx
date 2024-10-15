@@ -23,32 +23,43 @@ const createAppTheme = (mode: ITheme) => {
                 main: isDarkMode ? '#131314' : '#0f62fe',
             },
             background: {
-                default: isDarkMode ? '#131314' : '#fff',
+                default: isDarkMode ? '#181a1f' : '#f6f7f8',
+                paper: isDarkMode ? '#131314' : '#fff',
             },
             text: {
                 primary: isDarkMode ? '#ebecf0' : '#252733',
+                secondary: isDarkMode ? '#fff' : '#131314',
             },
         },
         components: {
             MuiButton: {
+                defaultProps: {
+                    variant: 'outlined',
+                },
                 styleOverrides: {
                     root: {
-                        padding: theme.spacing(1.5),
+                        padding: theme.spacing(1, 2),
                         borderRadius: theme.spacing(1),
+                        textTransform: 'initial',
+                        fontSize: theme.spacing(2),
+                        fontWeight: '500',
+                    },
+                    outlined: {
                         border: `2px solid ${isDarkMode ? '#3760ad' : '#abbde0'}`,
                         color: isDarkMode ? '#ebecf0' : '#252733',
                         backgroundColor: isDarkMode ? '#131314' : '#fff',
-                        textTransform: 'initial',
-                        fontSize: theme.spacing(2),
-                        fontWeight: 'bold',
                         '&:hover': {
-                            borderColor: isDarkMode ? '#3760ad' : '#abbde0',
+                            border: `2px solid ${isDarkMode ? '#3760ad' : '#abbde0'}`,
                             backgroundColor: isDarkMode ? '#181b29' : '#f0f5ff',
                         },
                         '&:focus': {
                             borderColor: isDarkMode ? '#3760ad' : '#abbde0',
                             backgroundColor: isDarkMode ? '#3760ad' : '#abbde0',
                         },
+                    },
+                    contained: {
+                        backgroundColor: isDarkMode ? '#5b94fe' : '#0f62fe',
+                        color: isDarkMode ? '#131314' : '#fff',
                     },
                 },
             },
@@ -192,6 +203,21 @@ const createAppTheme = (mode: ITheme) => {
                             borderRadius: '4px',
                             background: isDarkMode ? '#131314' : '#fff',
                         },
+                    },
+                },
+            },
+            MuiTypography: {
+                styleOverrides: {
+                    subtitle2: {
+                        color: isDarkMode ? '#c9ced6' : '#4d4d4d',
+                        fontWeight: 600,
+                    },
+                },
+            },
+            MuiInputBase: {
+                styleOverrides: {
+                    root: {
+                        background: isDarkMode ? '#131314' : '#fff',
                     },
                 },
             },
