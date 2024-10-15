@@ -123,6 +123,78 @@ const createAppTheme = (mode: ITheme) => {
                     },
                 },
             },
+            MuiTableCell: {
+                styleOverrides: {
+                    root: {
+                        padding: theme.spacing(1),
+                        color: isDarkMode ? '#c9ced6' : '#414752',
+                        verticalAlign: 'top',
+                    },
+                    body: {
+                        padding: theme.spacing(2, 1.5),
+                        borderTop: `1px solid ${isDarkMode ? '#414752' : '#d5d7db'}`,
+                        borderBottom: `1px solid ${isDarkMode ? '#414752' : '#d5d7db'}`,
+                    },
+                },
+            },
+            MuiChip: {
+                styleOverrides: {
+                    root: {
+                        color: isDarkMode ? '#fff' : '#0e0e0f',
+                        backgroundColor: isDarkMode ? '#252733' : '#ebecf0',
+                        fontSize: '0.875rem',
+                    },
+                },
+            },
+            MuiFormControlLabel: {
+                styleOverrides: {
+                    root: {
+                        margin: 0,
+                    },
+                    label: {
+                        fontWeight: 500,
+                        fontSize: '0.875rem',
+                        color: isDarkMode ? '#fff' : '#0e0e0f',
+                    },
+                },
+            },
+            MuiCheckbox: {
+                styleOverrides: {
+                    root: {
+                        paddingTop: theme.spacing(1.5),
+                        paddingBottom: theme.spacing(1.5),
+                        paddingRight: theme.spacing(1),
+                        paddingLeft: theme.spacing(0.25),
+                        '& .MuiSvgIcon-root': {
+                            color: '#B0B3B8',
+                        },
+                        '&.Mui-checked .MuiSvgIcon-root': {
+                            color: '#0f62fe',
+                        },
+                    },
+                },
+            },
+            MuiPaginationItem: {
+                styleOverrides: {
+                    root: {
+                        border: 'none',
+                        fontWeight: 600,
+                        fontSize: '16px',
+                        color: isDarkMode ? '#fff' : '#131314',
+                        padding: '12px 10px',
+                        minWidth: '36px',
+                        minHeight: '48px',
+                    },
+
+                    outlined: {
+                        '&.Mui-selected': {
+                            border: `2px solid ${isDarkMode ? '#3760ad' : '#abbde0'}`,
+                            borderRadius: '4px',
+                            background: isDarkMode ? '#131314' : '#fff',
+                        },
+                    },
+                },
+            },
         },
     });
 };
