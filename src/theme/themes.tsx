@@ -214,10 +214,44 @@ const createAppTheme = (mode: ITheme) => {
                     },
                 },
             },
-            MuiInputBase: {
+            MuiTextField: {
+                defaultProps: {
+                    variant: 'filled',
+                },
                 styleOverrides: {
                     root: {
+                        '& .MuiFilledInput-root': {
+                            '&.Mui-focused .MuiFilledInput-input': {
+                                border: `1px solid ${isDarkMode ? '#5b94fe' : '#0f62fe'}`,
+                                boxShadow: '0 0 0 1px #0f62fe',
+                            },
+                        },
+                    },
+                },
+            },
+            MuiFilledInput: {
+                defaultProps: {
+                    disableUnderline: true,
+                },
+                styleOverrides: {
+                    root: {
+                        borderRadius: '8px',
+                    },
+                    input: {
+                        border: `1px solid ${isDarkMode ? '#70737a' : '#b0b3b8'}`,
+                        borderRadius: '8px',
                         background: isDarkMode ? '#131314' : '#fff',
+                        color: isDarkMode ? '#fff' : '#131314',
+                    },
+                },
+            },
+            MuiInputLabel: {
+                styleOverrides: {
+                    filled: {
+                        color: isDarkMode ? '#8b8e94' : '#8a8d94',
+                        '&.Mui-focused': {
+                            color: isDarkMode ? '#b0b3b8' : '#70737a',
+                        },
                     },
                 },
             },
