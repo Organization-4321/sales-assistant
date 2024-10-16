@@ -217,7 +217,6 @@ const createAppTheme = (mode: ITheme) => {
             MuiTextField: {
                 styleOverrides: {
                     root: {
-                        background: isDarkMode ? '#131314' : '#fff',
                         '& .MuiFilledInput-root': {
                             '&.Mui-focused': {
                                 background: isDarkMode ? '#131314' : '#fff',
