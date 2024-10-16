@@ -27,10 +27,10 @@ const AuthForm: FC<AuthFormProps> = ({}) => {
                 <Button startIcon={<MicrosoftIcon />}>Continue with Microsoft</Button>
                 {error && <CustomAlertError errors={getResponseErrorMessage(error)} />}
                 <Divider>or</Divider>
-                <TextField placeholder="Email" value={email} onChange={handleChangeEmail} />
+                <TextField label="Email" value={email} onChange={handleChangeEmail} />
                 <TextField
                     inputRef={passwordRef}
-                    placeholder="Password"
+                    label="Password"
                     type="password"
                     value={password}
                     onChange={handleChangePassword}
