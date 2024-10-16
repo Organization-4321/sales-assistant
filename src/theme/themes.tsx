@@ -226,6 +226,7 @@ const createAppTheme = (mode: ITheme) => {
                             },
                             '&:hover': {
                                 background: isDarkMode ? '#131314' : '#fff',
+                                border: `1px solid #000`,
                             },
                         },
                     },
