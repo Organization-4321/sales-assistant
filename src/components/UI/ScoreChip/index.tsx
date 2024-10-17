@@ -1,9 +1,9 @@
-import { Chip } from '@mui/material';
+import { Chip, ChipProps } from '@mui/material';
 import { FC } from 'react';
-import { useAppTheme } from '../../../../theme';
-import { ITheme } from '../../../../theme/types';
+import { useAppTheme } from '../../../theme';
+import { ITheme } from '../../../theme/types';
 
-interface UpworkScoreCellProps {
+interface ScoreChipProps extends ChipProps {
     score: number;
 }
 
@@ -40,7 +40,7 @@ const scoresRange = [
     },
 ];
 
-const UpworkScoreCell: FC<UpworkScoreCellProps> = ({ score }) => {
+const ScoreChip: FC<ScoreChipProps> = ({ score, sx, ...props }) => {
     const { themeName } = useAppTheme();
 
     const scoreRange = scoresRange.find(
@@ -49,7 +49,13 @@ const UpworkScoreCell: FC<UpworkScoreCellProps> = ({ score }) => {
 
     const scoreColor = themeName === ITheme.DARK ? scoreRange?.darkColor : scoreRange?.lightColor;
 
-    return <Chip sx={{ backgroundColor: scoreColor, fontWeight: 500 }} label={score} />;
+    return (
+        <Chip
+            sx={{ backgroundColor: scoreColor, fontWeight: 500, ...sx }}
+            label={score}
+            {...props}
+        />
+    );
 };
 
-export default UpworkScoreCell;
+export default ScoreChip;

@@ -3,8 +3,8 @@ import { IUpworkFeedItemDTO } from '../../../interfaces-submodule/interfaces/dto
 import moment, { MomentInput } from 'moment';
 import UpworkKeywordsCell from '../components/UpworkKeywordsCell';
 import UpworkReactionCell from '../components/UpworkReactionCell';
-import UpworkScoreCell from '../components/UpworkScoreCell';
 import RouterLink from '../../../components/UI/RouterLink';
+import ScoreChip from '../../../components/UI/ScoreChip';
 
 const createUpworkFeedTableColumns = (): ColumnDef<IUpworkFeedItemDTO>[] => [
     {
@@ -27,7 +27,7 @@ const createUpworkFeedTableColumns = (): ColumnDef<IUpworkFeedItemDTO>[] => [
     },
     {
         accessorKey: 'score',
-        cell: ({ row }) => row.original.score && <UpworkScoreCell score={row.original.score} />,
+        cell: ({ row }) => row.original.score && <ScoreChip score={row.original.score} />,
     },
     {
         accessorKey: 'review',
