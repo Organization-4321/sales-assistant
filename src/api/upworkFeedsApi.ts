@@ -15,6 +15,7 @@ export interface IGetAllUpworkFeedRequestWithPagination extends IGetAllUpworkFee
 const upworkFeedsApi = createApi({
     reducerPath: UpworkFeedsRoutesEnum.BasePrefix,
     baseQuery: baseQueryWithReauth(UpworkFeedsRoutesEnum.BasePrefix),
+    tagTypes: ['UpworkFeed'],
     endpoints: (builder) => ({
         getUpworkFeeds: builder.mutation<
             IApiResponseGenericDTO<IUpworkResponseListFeedsDto>,
@@ -31,6 +32,7 @@ const upworkFeedsApi = createApi({
                 url: feedId,
                 method: 'GET',
             }),
+            providesTags: ['UpworkFeed'],
         }),
         updateUpworkFeed: builder.mutation<
             IApiResponseGenericDTO<IUpworkFeedDetailItemDTO>,
@@ -41,6 +43,7 @@ const upworkFeedsApi = createApi({
                 method: 'PUT',
                 body: updateMatchesBody,
             }),
+            invalidatesTags: ['UpworkFeed'],
         }),
     }),
 });
