@@ -4,6 +4,8 @@ import { UpworkFeedsRoutesEnum } from '../interfaces-submodule/enums/routes/upwo
 import { IApiResponseGenericDTO } from '../interfaces-submodule/interfaces/dto/common/iapi-response.interface';
 import { IUpworkResponseListFeedsDto } from '../interfaces-submodule/interfaces/dto/upwork-feed/iupwork-response-list-feeds.dto';
 import { IGetAllUpworkFeedRequest } from '../interfaces-submodule/interfaces/dto/upwork-feed/iget-all-upwork-feed-request.interface';
+import { IUpworkFeedDetailItemDTO } from '../interfaces-submodule/interfaces/dto/upwork-feed/iupwork-feed-detail-item.dto';
+import { IUpdateUpworkFeedDto } from '../interfaces-submodule/interfaces/dto/upwork-feed/iupdate-upwork-feed.dto';
 
 export interface IGetAllUpworkFeedRequestWithPagination extends IGetAllUpworkFeedRequest {
     pageNumber: number;
@@ -24,9 +26,26 @@ const upworkFeedsApi = createApi({
                 body: requestBody,
             }),
         }),
+        getUpworkFeedById: builder.query<IApiResponseGenericDTO<IUpworkFeedDetailItemDTO>, string>({
+            query: (feedId) => ({
+                url: feedId,
+                method: 'GET',
+            }),
+        }),
+        updateUpworkFeed: builder.mutation<
+            IApiResponseGenericDTO<IUpworkFeedDetailItemDTO>,
+            { feedId: string; updateMatchesBody: IUpdateUpworkFeedDto }
+        >({
+            query: ({ feedId, updateMatchesBody }) => ({
+                url: feedId,
+                method: 'PUT',
+                body: updateMatchesBody,
+            }),
+        }),
     }),
 });
 
-export const { useGetUpworkFeedsMutation } = upworkFeedsApi;
+export const { useGetUpworkFeedsMutation, useGetUpworkFeedByIdQuery, useUpdateUpworkFeedMutation } =
+    upworkFeedsApi;
 
 export default upworkFeedsApi;
