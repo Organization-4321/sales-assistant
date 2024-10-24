@@ -30,6 +30,13 @@ const createAppTheme = (mode: ITheme) => {
                 primary: isDarkMode ? '#ebecf0' : '#252733',
                 secondary: isDarkMode ? '#fff' : '#131314',
             },
+            customGray: {
+                light: '#70737a',
+                medium: isDarkMode ? '#c9ced6' : '#414752',
+            },
+            customBlue: {
+                main: isDarkMode ? '#5b94fe' : '#0f62fe',
+            },
         },
         components: {
             MuiButton: {
