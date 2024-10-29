@@ -3,7 +3,7 @@ import { IUpworkFeedMatchEntityDto } from '../../../../interfaces-submodule/inte
 import { Collapse, Typography } from '@mui/material';
 import VacancyMatchedBlockItem from '../VacancyMatchedBlockItem';
 import VacancyMatchedTable from '../VacancyMatchedTable';
-import useExpandBlock from '../../hooks/useExpandBlock';
+import useExpandBlock from '../../../../hooks/useExpandBlock';
 
 interface VacancyMatchedCaseProps {
     caseData: IUpworkFeedMatchEntityDto;
