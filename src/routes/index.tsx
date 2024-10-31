@@ -4,6 +4,7 @@ import UpworkFeed from '../pages/UpworkFeed';
 import { APP_ROUTES } from './app-routes.enum';
 import ProtectedRoute from './ProtectedRoute';
 import VacancyPage from '../pages/Vacancy';
+import Layout from '../layout';
 
 const router = createBrowserRouter([
     {
@@ -14,12 +15,17 @@ const router = createBrowserRouter([
         element: <ProtectedRoute />,
         children: [
             {
-                path: APP_ROUTES.UPWORK_FEED,
-                element: <UpworkFeed />,
-            },
-            {
-                path: APP_ROUTES.VACANCY,
-                element: <VacancyPage />,
+                element: <Layout />,
+                children: [
+                    {
+                        path: APP_ROUTES.UPWORK_FEED,
+                        element: <UpworkFeed />,
+                    },
+                    {
+                        path: APP_ROUTES.VACANCY,
+                        element: <VacancyPage />,
+                    },
+                ],
             },
         ],
     },
