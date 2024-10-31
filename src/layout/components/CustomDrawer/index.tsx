@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Divider, Drawer } from '@mui/material';
 import DrawerFooter from './DrawerFooter';
 import DrawerBody from './DrawerBody';
+import useDisableBodyScroll from '../../../hooks/useDisableBodyScroll';
 
 interface CustomDrawerProps {
     drawerWidth: number;
@@ -9,6 +10,8 @@ interface CustomDrawerProps {
 }
 
 const CustomDrawer: FC<CustomDrawerProps> = ({ drawerWidth, isOpened }) => {
+    useDisableBodyScroll(isOpened);
+
     return (
         <Drawer
             sx={{
