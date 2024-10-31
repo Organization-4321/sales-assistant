@@ -1,5 +1,6 @@
 import { Popover, PopoverProps } from '@mui/material';
 import { FC } from 'react';
+import commonBoxShadow from '../../../theme/common/commonBoxShadow';
 
 const CustomPopover: FC<PopoverProps> = ({ children, ...props }) => {
     return (
@@ -12,9 +13,10 @@ const CustomPopover: FC<PopoverProps> = ({ children, ...props }) => {
                 paper: {
                     sx: (theme) => ({
                         borderRadius: '12px',
-                        border: `1px solid #d5d7db`,
+                        border: theme.borders.thin,
                         padding: theme.spacing(1.5),
-                        boxShadow: '0 4px 16px -2px rgba(0, 0, 0, 0.16)',
+                        boxShadow: commonBoxShadow,
+                        background: theme.palette.background.paper,
                     }),
                 },
             }}
