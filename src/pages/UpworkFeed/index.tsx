@@ -49,7 +49,7 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         useUpworkFeedTable(data);
 
     return (
-        <Box sx={{ px: 4 }}>
+        <Box>
             <Button onClick={refetchUpworkFeeds} startIcon={<RefreshIcon />}>
                 Refetch RSS
             </Button>
