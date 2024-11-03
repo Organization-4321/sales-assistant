@@ -31,7 +31,7 @@ const UpworkFeedPagination: FC<UpworkFeedPaginationProps> = ({
             left={0}
             sx={(theme) => ({
                 backgroundColor: theme.palette.background.default,
-                borderTop: `1px solid ${theme.palette.mode === 'dark' ? '#414752' : '#d5d7db'}`,
+                borderTop: `1px solid ${theme.palette.borderColors.main}`,
             })}>
             <StyledTablePagination
                 page={page}
