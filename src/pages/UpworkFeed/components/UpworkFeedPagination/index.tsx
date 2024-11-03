@@ -47,6 +47,11 @@ const UpworkFeedPagination: FC<UpworkFeedPaginationProps> = ({
                 count={totalPagesCount}
                 showFirstButton
                 showLastButton
+                sx={{
+                    '& .MuiPagination-ul': {
+                        flexWrap: 'nowrap',
+                    },
+                }}
             />
         </Box>
     );
