@@ -12,9 +12,9 @@ const UpworkReactionCell: FC<UpworkReactionCellProps> = ({ type }) => {
     return (
         <Box display="flex" justifyContent="center">
             {type === ReviewType.Like ? (
-                <LikeIcon sx={{ textAlign: 'center' }} />
+                <LikeIcon sx={{ textAlign: 'center' }} fill="#187a18" />
             ) : (
-                <DislikeIcon sx={{ textAlign: 'center' }} />
+                <DislikeIcon sx={{ textAlign: 'center' }} fill="#c02" />
             )}
         </Box>
     );
