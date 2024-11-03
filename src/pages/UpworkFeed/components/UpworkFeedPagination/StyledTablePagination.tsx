@@ -59,6 +59,7 @@ const StyledTablePagination: FC<StyledTablePaginationProps> = ({
                     display: 'flex',
                     justifyContent: 'space-between',
                     width: '100%',
+                    paddingLeft: 1,
                 },
                 '& .MuiTablePagination-selectLabel': {
                     order: 1,
