@@ -39,6 +39,10 @@ const createAppTheme = (mode: ITheme) => {
             customBlue: {
                 main: isDarkMode ? '#5b94fe' : '#0f62fe',
             },
+            borderColors: {
+                main: isDarkMode ? '#414752' : '#d5d7db',
+                secondary: isDarkMode ? '#70737a' : '#b0b3b8',
+            },
         },
         components: {
             MuiButton: {
