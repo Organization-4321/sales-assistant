@@ -62,6 +62,7 @@ const SideMenuItem: FC<SideMenuItemProps> = ({
                 {afterIcon && (
                     <ListItemIcon
                         onClick={(e) => {
+                            e.preventDefault();
                             e.stopPropagation();
                         }}
                         sx={{
