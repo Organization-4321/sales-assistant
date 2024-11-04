@@ -5,7 +5,7 @@ import { APP_ROUTES } from './app-routes.enum';
 import ProtectedRoute from './ProtectedRoute';
 import VacancyPage from '../pages/Vacancy';
 import Layout from '../layout';
-import ChatPage from '../pages/Chat';
+import ChatPage from '../pages/ChatPage';
 
 const router = createBrowserRouter([
     {
