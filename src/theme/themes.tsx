@@ -39,6 +39,10 @@ const createAppTheme = (mode: ITheme) => {
             customBlue: {
                 main: isDarkMode ? '#5b94fe' : '#0f62fe',
             },
+            borderColors: {
+                main: isDarkMode ? '#414752' : '#d5d7db',
+                secondary: isDarkMode ? '#70737a' : '#b0b3b8',
+            },
         },
         components: {
             MuiButton: {
@@ -69,13 +73,6 @@ const createAppTheme = (mode: ITheme) => {
                     contained: {
                         backgroundColor: isDarkMode ? '#5b94fe' : '#0f62fe',
                         color: isDarkMode ? '#131314' : '#fff',
-                    },
-                },
-            },
-            MuiOutlinedInput: {
-                styleOverrides: {
-                    root: {
-                        borderRadius: theme.spacing(1),
                     },
                 },
             },
@@ -223,19 +220,24 @@ const createAppTheme = (mode: ITheme) => {
                     },
                 },
             },
-            MuiTextField: {
+            MuiInputBase: {
                 styleOverrides: {
                     root: {
-                        '& .MuiFilledInput-root': {
-                            '&.Mui-focused': {
-                                background: isDarkMode ? '#131314' : '#fff',
-                                border: `1px solid ${isDarkMode ? '#5b94fe' : '#0f62fe'}`,
-                                boxShadow: '0 0 0 1px #0f62fe',
-                            },
-                            '&:hover': {
-                                background: isDarkMode ? '#131314' : '#fff',
-                                border: `1px solid #000`,
-                            },
+                        background: isDarkMode ? '#131314' : '#fff',
+                    },
+                },
+            },
+            MuiOutlinedInput: {
+                styleOverrides: {
+                    root: {
+                        borderRadius: theme.spacing(1),
+                        '& fieldset': {
+                            border: `1px solid ${isDarkMode ? '#70737a' : '#b0b3b8'}`,
+                        },
+                        '&:hover .MuiOutlinedInput-notchedOutline': {},
+                        '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                            boxShadow: '0 0 0 1px #0f62fe',
+                            border: `1px solid ${isDarkMode ? '#5b94fe' : '#0f62fe'}`,
                         },
                     },
                 },
@@ -249,6 +251,15 @@ const createAppTheme = (mode: ITheme) => {
                         background: isDarkMode ? '#131314' : '#fff',
                         border: `1px solid ${isDarkMode ? '#70737a' : '#b0b3b8'}`,
                         borderRadius: '8px',
+                        '&.Mui-focused': {
+                            background: isDarkMode ? '#131314' : '#fff',
+                            border: `1px solid ${isDarkMode ? '#5b94fe' : '#0f62fe'}`,
+                            boxShadow: '0 0 0 1px #0f62fe',
+                        },
+                        '&:hover:not(.Mui-focused)': {
+                            background: isDarkMode ? '#131314' : '#fff',
+                            border: `1px solid ${isDarkMode ? '#fff' : '#131314'}`,
+                        },
                     },
                     input: {
                         color: isDarkMode ? '#fff' : '#131314',

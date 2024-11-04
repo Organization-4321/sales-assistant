@@ -49,36 +49,40 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
         useUpworkFeedTable(data);
 
     return (
-        <Box sx={{ px: 4 }}>
-            <Button onClick={refetchUpworkFeeds} startIcon={<RefreshIcon />}>
-                Refetch RSS
-            </Button>
-            <CustomTable
-                data={tableItems}
-                columns={columns}
-                titleProps={{
-                    title,
-                    setTitle,
-                }}
-                filterProps={{
-                    keywordsOptions,
-                    scoresOptions,
-                    selectedKeywordsOptions,
-                    setSelectedKeywordsOptions,
-                    selectedScoresOptions,
-                    setSelectedScoresOptions,
-                    published,
-                    setPublished,
-                    reactionsOptions,
-                    selectedReactionsOptions,
-                    setSelectedReactionsOptions,
-                }}
-                sortProps={{
-                    sortBy,
-                    handleSetSortBy,
-                    sortDirection,
-                }}
-            />
+        <>
+            <Box minHeight="100vh">
+                <Box>
+                    <Button onClick={refetchUpworkFeeds} startIcon={<RefreshIcon />}>
+                        Refetch RSS
+                    </Button>
+                </Box>
+                <CustomTable
+                    data={tableItems}
+                    columns={columns}
+                    titleProps={{
+                        title,
+                        setTitle,
+                    }}
+                    filterProps={{
+                        keywordsOptions,
+                        scoresOptions,
+                        selectedKeywordsOptions,
+                        setSelectedKeywordsOptions,
+                        selectedScoresOptions,
+                        setSelectedScoresOptions,
+                        published,
+                        setPublished,
+                        reactionsOptions,
+                        selectedReactionsOptions,
+                        setSelectedReactionsOptions,
+                    }}
+                    sortProps={{
+                        sortBy,
+                        handleSetSortBy,
+                        sortDirection,
+                    }}
+                />
+            </Box>
             <UpworkFeedPagination
                 page={pageNumber}
                 handlePageChange={handlePageNumberChange}
@@ -87,7 +91,7 @@ const UpworkFeed: FC<UpworkFeedProps> = ({}) => {
                 totalPagesCount={totalPagesCount}
                 handlePageSizeChange={handlePageSizeChange}
             />
-        </Box>
+        </>
     );
 };
 
