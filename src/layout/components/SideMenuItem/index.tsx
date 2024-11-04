@@ -49,7 +49,16 @@ const SideMenuItem: FC<SideMenuItemProps> = ({
                     },
                 }}>
                 {beforeIcon && <ListItemIcon sx={{ minWidth: 'unset' }}>{beforeIcon}</ListItemIcon>}
-                <ListItemText primary={label} />
+                <ListItemText
+                    sx={{
+                        '& span': {
+                            textOverflow: 'ellipsis',
+                            overflow: 'hidden',
+                            whiteSpace: 'nowrap',
+                        },
+                    }}
+                    primary={label}
+                />
                 {afterIcon && (
                     <ListItemIcon
                         onClick={(e) => {
