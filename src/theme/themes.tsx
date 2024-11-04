@@ -14,6 +14,7 @@ const createAppTheme = (mode: ITheme) => {
 
     const theme = createTheme({
         typography: baseTypography,
+        borders: { thin: `1px solid ${isDarkMode ? '#414752' : '#d5d7db'}` },
     });
 
     return createTheme(theme, {
@@ -28,6 +29,7 @@ const createAppTheme = (mode: ITheme) => {
             },
             text: {
                 primary: isDarkMode ? '#ebecf0' : '#252733',
+                primaryReversed: isDarkMode ? '#252733' : '#ebecf0',
                 secondary: isDarkMode ? '#fff' : '#131314',
             },
             customGray: {

@@ -5,7 +5,7 @@ import ScoreChip from '../../../../components/UI/ScoreChip';
 import RouterLink from '../../../../components/UI/RouterLink';
 import VacancyInfoCard from '../VacancyInfoCard';
 import moment from 'moment';
-import useExpandBlock from '../../hooks/useExpandBlock';
+import useExpandBlock from '../../../../hooks/useExpandBlock';
 import ExpandableTypography from '../../../../components/UI/ExpandableTypography';
 
 interface VacancyProjectInfoProps {
