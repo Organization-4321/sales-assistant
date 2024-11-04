@@ -55,9 +55,10 @@ const StyledTablePagination: FC<StyledTablePaginationProps> = ({
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
+                '& .MuiTablePagination-spacer': {
+                    display: 'none',
+                },
                 '& .MuiTablePagination-toolbar': {
-                    display: 'flex',
-                    justifyContent: 'space-between',
                     width: '100%',
                     paddingLeft: 1,
                 },
@@ -71,6 +72,7 @@ const StyledTablePagination: FC<StyledTablePaginationProps> = ({
                     padding: '12px 8px 12px 12px',
                     width: '100px',
                     height: '48px',
+                    marginRight: 0,
                     backgroundColor: theme.palette.mode === 'dark' ? '#131314' : '#fff',
                     '& .MuiSelect-select': {
                         textAlignLast: 'left',

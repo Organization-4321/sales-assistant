@@ -1,4 +1,4 @@
-import { Box, Pagination } from '@mui/material';
+import { Grid, Pagination } from '@mui/material';
 import { FC } from 'react';
 import StyledTablePagination from './StyledTablePagination';
 
@@ -22,8 +22,8 @@ const UpworkFeedPagination: FC<UpworkFeedPaginationProps> = ({
     handlePageSizeChange,
 }) => {
     return (
-        <Box
-            display="flex"
+        <Grid
+            container
             alignItems="center"
             justifyContent="space-between"
             position="sticky"
@@ -33,27 +33,31 @@ const UpworkFeedPagination: FC<UpworkFeedPaginationProps> = ({
                 backgroundColor: theme.palette.background.default,
                 borderTop: `1px solid ${theme.palette.borderColors.main}`,
             })}>
-            <StyledTablePagination
-                page={page}
-                perPage={perPage}
-                totalItemsCount={totalItemsCount}
-                handlePageSizeChange={handlePageSizeChange}
-            />
-            <Pagination
-                page={page}
-                onChange={handlePageChange}
-                shape="rounded"
-                variant="outlined"
-                count={totalPagesCount}
-                showFirstButton
-                showLastButton
-                sx={{
-                    '& .MuiPagination-ul': {
-                        flexWrap: 'nowrap',
-                    },
-                }}
-            />
-        </Box>
+            <Grid item>
+                <StyledTablePagination
+                    page={page}
+                    perPage={perPage}
+                    totalItemsCount={totalItemsCount}
+                    handlePageSizeChange={handlePageSizeChange}
+                />
+            </Grid>
+            <Grid item>
+                <Pagination
+                    page={page}
+                    onChange={handlePageChange}
+                    shape="rounded"
+                    variant="outlined"
+                    count={totalPagesCount}
+                    showFirstButton
+                    showLastButton
+                    sx={{
+                        '& .MuiPagination-ul': {
+                            flexWrap: 'nowrap',
+                        },
+                    }}
+                />
+            </Grid>
+        </Grid>
     );
 };
 
