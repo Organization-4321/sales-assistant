@@ -39,7 +39,7 @@ const SideMenuItem: FC<SideMenuItemProps> = ({
                     gap: 1,
                     py: 0.75,
                     borderRadius: 2,
-                    color: 'text.secondary',
+                    color: theme.palette.text.secondary,
                     bgcolor:
                         location.pathname === to
                             ? theme.palette.text.primaryReversed
