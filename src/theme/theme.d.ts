@@ -21,6 +21,10 @@ declare module '@mui/material/styles' {
         customBlue: {
             main: string;
         };
+        borderColors: {
+            main: string;
+            secondary: string;
+        };
     }
 
     interface PaletteOptions {
@@ -30,6 +34,10 @@ declare module '@mui/material/styles' {
         };
         customBlue?: {
             main?: string;
+        };
+        borderColors: {
+            main?: string;
+            secondary?: string;
         };
     }
 
