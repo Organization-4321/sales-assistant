@@ -25,7 +25,7 @@ const CustomDrawer: FC<CustomDrawerProps> = ({ drawerWidth, isOpened }) => {
             variant="persistent"
             anchor="left"
             open={isOpened}>
-            <DrawerBody />
+            {isOpened && <DrawerBody />}
             <Divider sx={{ marginTop: 'auto' }} />
             <DrawerFooter />
         </Drawer>
